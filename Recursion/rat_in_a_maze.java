@@ -29,6 +29,7 @@ public class rat_in_a_maze {
         if(isSafe(newX, newY, mainArray, visitedArray)){
             path = path + 'D';
             pattern(mainArray,visitedArray,patternStr,newX,newY,path);
+            //backtrack
             path = path.substring(0, path.length() -1);
         }
 
@@ -38,6 +39,7 @@ public class rat_in_a_maze {
         if(isSafe(newX, newY, mainArray, visitedArray)){
             path = path + 'L';
             pattern(mainArray,visitedArray,patternStr,newX,newY,path);
+            //backtrack
              path = path.substring(0, path.length() -1);
         }
 
@@ -47,6 +49,7 @@ public class rat_in_a_maze {
         if(isSafe(newX, newY, mainArray, visitedArray)){
             path = path + 'R';
             pattern(mainArray,visitedArray,patternStr,newX,newY,path);
+            //backtrack
              path = path.substring(0, path.length() -1);
         }
 
@@ -58,9 +61,11 @@ public class rat_in_a_maze {
         if(isSafe(newX, newY, mainArray, visitedArray)){
             path = path + 'U';
             pattern(mainArray,visitedArray,patternStr,newX,newY,path);
+            //backtrack
              path = path.substring(0, path.length() -1);
         }
 
+        //backtrack
         visitedArray[x][y] = 0;
     }
     
