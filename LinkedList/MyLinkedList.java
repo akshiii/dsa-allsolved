@@ -76,6 +76,21 @@ class MyLinkedList{
         secondLast.next = null;
     }
 
+    public void deleteFromMiddle(int position){
+        //position can be from 1 to length of LL ( any number)
+        Node prev = null;
+        Node curr = head;
+
+        int count = 1;
+        while(count < position){
+          prev = curr;
+          curr = curr.next;
+          count++;
+          
+        }
+        prev.next = curr.next;
+    }
+
     public void reverseIterate(){
         if(head == null ||head.next == null){
             return;
@@ -100,12 +115,16 @@ class MyLinkedList{
         MyLinkedList list = new MyLinkedList();
         list.addLast("1");
         list.addLast("2");
-        // list.addLast("3");
-        // list.addLast("4");
+        list.addLast("3");
+        list.addLast("4");
         list.printList();
 
         System.out.println("");
-        list.reverseIterate();
+
+        list.deleteFromMiddle(3);
         list.printList();
+
+        // list.reverseIterate();
+        // list.printList();
     }
 }
