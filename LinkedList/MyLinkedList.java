@@ -59,7 +59,8 @@ class MyLinkedList{
             System.out.print("List is empty");
         }
 
-         if(head.next == null){
+        //if only 1 node is there
+        if(head.next == null){
             head = null;
             return;
         }
