@@ -24,6 +24,10 @@ public class DoublyLinkedList {
         head = newNode;
     }
 
+    public void insertAtPosition(int position){
+        //insert node at any position
+    }
+
     public void printDLL(){
         Node curr = head;
         while (curr.next != null) {
