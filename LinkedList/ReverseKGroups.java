@@ -1,13 +1,13 @@
 public class ReverseKGroups {
     
-    public Node kReverse(LinkedList list,Node main, int k) {
+    public Node kReverse(LinkedList list,Node start, int k) {
         //base call
-        if(main == null){
+        if(start == null){
             return null;
         }
         //reverse first k nodes
         Node next = null;
-        Node curr = main;
+        Node curr = start;
         Node prev = null;
         int count = 0;
 
@@ -22,7 +22,7 @@ public class ReverseKGroups {
 
         //recursive call
         if(next != null){
-            main.next = kReverse(list, next, k);
+            start.next = kReverse(list, next, k);
         }
 
         //return head of reversed list
