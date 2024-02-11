@@ -1,5 +1,12 @@
 public class ReverseKGroups {
     
+    /**
+     * Recursive function
+     * @param list actual list
+     * @param start Starting node for K group to reverse
+     * @param k Size of groups
+     * @return New head node 
+     */
     public Node kReverse(LinkedList list,Node start, int k) {
         //base call
         if(start == null){
