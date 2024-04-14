@@ -1,4 +1,5 @@
 //Find if LL is circular or not
+
 public class FindCircularLL {
 
     public boolean isCircularLL(LinkedList list){
