@@ -15,12 +15,53 @@ public class FindLoopInLL {
             if(visited.get(temp) != null && visited.get(temp) == true){
                 return true;
             }
-            System.out.println(visited.get(temp));
             visited.put(temp, true);
             temp = temp.next;
         }
 
         return false;
+    }
+
+    /*
+    *Finding strating node of loop
+    Ex- 1->2->3->4->5->2 ( This means here 2 is the strating node of loop)
+    */
+    Node findStartingPointOfLoop(LinkedList list){
+        Map<Node,Boolean> visited = new HashMap<>();
+        Node temp = list.head;
+
+        if(list.head == null){
+            return null;
+        }
+        while(temp.next != null){
+            if(visited.get(temp) != null && visited.get(temp) == true){
+                return temp;
+            }
+            visited.put(temp, true);
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    void removeLoopInLL(LinkedList list){
+        Map<Node,Boolean> visited = new HashMap<>();
+        Node temp = list.head;
+        Node prev = null;
+
+        if(list.head == null){
+            return;
+        }
+        while(temp.next != null){
+            if(visited.get(temp) != null && visited.get(temp) == true){
+                prev.next = null;
+                break;
+            }
+            // System.out.println(visited.get(temp));
+            visited.put(temp, true);
+            prev = temp;
+            temp = temp.next;
+        }
+        return;
     }
     
 
@@ -36,5 +77,9 @@ public class FindLoopInLL {
         System.out.println();
         FindLoopInLL findLoop = new FindLoopInLL();
         System.out.println("Loop in LL ? = "+findLoop.isLoopExist(list));
+        System.out.println("Starting point in Loop = " + findLoop.findStartingPointOfLoop(list).data);
+        System.out.print("Removing Loop in LL ");
+        findLoop.removeLoopInLL(list);
+        list.printList();
     }
 }
