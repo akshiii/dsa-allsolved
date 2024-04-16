@@ -109,4 +109,18 @@ public class LinkedList {
         head = prevNode;
         
     }
+
+    /**
+     * This function will create a loop in LinkedList 1->2->3->4->5->2 (Here last node is pointing to second node, and there is no null)
+     */
+    public void makeLoopInLL(){
+        Node temp = head;
+        while(temp.next != null){ 
+            System.out.print(temp.data+" -> ");
+            temp = temp.next;
+        }
+        System.out.print(temp.data+" -> ");
+        temp.next = head.next;
+        System.out.print(temp.next.data);
+    }
 }

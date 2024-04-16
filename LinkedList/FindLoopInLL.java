@@ -1,4 +1,4 @@
-// IMP!! -> Here the logic for finding loop is correct but the way we are trying to make a Circular LL is not correct, thats why it may not work here.
+// IMP!! -> Here the logic for finding loop is correct but the way we are trying to make a loop in LL is not exactly correct, it is just to test the logic here.
 // This is solved in leetcode here-https://leetcode.com/problems/linked-list-cycle/
 import java.util.HashMap;
 import java.util.Map;
@@ -30,10 +30,8 @@ public class FindLoopInLL {
         list.addLast("2");
         list.addLast("3");
         list.addLast("4");
-        list.addLast("2");
-
-        list.printList();
-        System.out.println();
+        list.addLast("5");
+        list.makeLoopInLL();
 
         FindLoopInLL findLoop = new FindLoopInLL();
         System.out.println("Loop in LL ? = "+findLoop.isLoopExist(list));
