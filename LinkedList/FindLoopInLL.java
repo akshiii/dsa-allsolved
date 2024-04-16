@@ -33,6 +33,7 @@ public class FindLoopInLL {
         list.addLast("5");
         list.makeLoopInLL();
 
+        System.out.println();
         FindLoopInLL findLoop = new FindLoopInLL();
         System.out.println("Loop in LL ? = "+findLoop.isLoopExist(list));
     }
