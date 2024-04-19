@@ -23,38 +23,6 @@ public class RemoveDuplicates {
         }
     }
 
-    //Delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. 
-    // void deleteAllDuplicates(LinkedList list){
-    //     Node prevPrev = list.head;
-    //     Node prev = list.head;
-    //     Node curr = prev.next;
-    //     boolean temp = false;
-    //     while(curr != null){
-    //         while(curr != null && prev.data == curr.data ){
-    //                 System.out.println("Found common="+ prev.data);
-    //                 curr = curr.next;
-    //                 temp = true;
-    //         }
-
-    //         if( curr == null || curr.next == null){
-    //             prevPrev.next = curr;
-    //             if(curr!=null){
-    //                 prevPrev = curr;
-    //             }
-    //             break;
-    //         }
-            
-    //         else if (curr.data != curr.next.data && temp == true ){
-    //             prevPrev.next = curr;
-    //             prevPrev = curr;
-    //         }
-            
-    //         prev = curr;
-    //         curr = curr.next;
-    //         temp = false;
-    //     }
-    // }
-
     // TODO: Unsolved!!!
     void deleteAllDuplicates(LinkedList list){
         Map<Node,Boolean> visited = new HashMap<>();
