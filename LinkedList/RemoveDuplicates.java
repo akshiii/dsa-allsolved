@@ -1,4 +1,8 @@
 //Removing duplicates from Sorted Linked List
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class RemoveDuplicates {
 
     //Removing only duplicate extra nodes
@@ -53,57 +57,15 @@ public class RemoveDuplicates {
 
     // TODO: Unsolved!!!
     void deleteAllDuplicates(LinkedList list){
-        Node lastDistinctNode = list.head;
-        Node prev = list.head;
-        Node curr = prev.next;
-        boolean temp = false;
-        boolean firstUniqueFound = false;
-
-
+        Map<Node,Boolean> visited = new HashMap<>();
+        Node curr = list.head;
         while(curr != null){
-
-            while(curr != null && curr.next != null && ( prev.data == curr.data || curr.data == curr.next.data)){
-                    System.out.println("Found common="+ prev.data);
-                    curr = curr.next;
-                    temp = true;
-            }
-            
-            if (prev.data != curr.data && temp == false){
-                if(curr.next != null && curr.data != curr.next.data){
-                    
-                    
-                    lastDistinctNode.next = curr;
-                    lastDistinctNode = prev;
-                    if(!firstUniqueFound){
-                        list.head = lastDistinctNode;
-                        firstUniqueFound = true;
-                    }
-                }
-                else if(curr.next == null){
-                    
-                    lastDistinctNode.next = curr;
-                    lastDistinctNode.next.next = null;
-                    if(!firstUniqueFound){
-                        list.head = lastDistinctNode;
-                        firstUniqueFound = true;
-                    }
-                    break;
-                }
-            }
-            else if(curr.next == null && temp == true){
-                if(!firstUniqueFound){
-                        list.head = lastDistinctNode;
-                        firstUniqueFound = true;
-                    }
-                lastDistinctNode.next = null;
-                break;
-            }
-            
-            prev = curr;
+            visited.put(curr, true);
             curr = curr.next;
-            temp = false;
         }
     }
+
+   
     
 
     public static void main(String[] args) {
