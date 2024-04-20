@@ -82,7 +82,7 @@ public class Sort012LL {
             zeroTail.next = oneHead.next;
         }
         else {
-             zeroTail.next = twoHead.next;
+            zeroTail.next = twoHead.next;
         }
         
         oneTail.next = twoHead.next;
@@ -93,11 +93,11 @@ public class Sort012LL {
     }
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
-        list.addLast("1");
+        // list.addLast("1");
         list.addLast("2");
-        list.addLast("0");
-        list.addLast("1");
-        list.addLast("0");
+        // list.addLast("0");
+        // list.addLast("1");
+        // list.addLast("0");
         list.addLast("2");
         list.printList();
 
