@@ -3,6 +3,10 @@
 public class Merge2SortedLL {
 
     LinkedList mergeLL(Merge2SortedLL merge2SortedLL,LinkedList l1, LinkedList l2){ 
+        //base cases
+        if(l1.head == null) return l2;
+        if(l2.head == null) return l1;
+
         //Data of First node of list 2 must always be bigger than first node of List 1, 
         //if not then Exchange l2 to l1, and l1 to l2
         if(Integer.parseInt(l2.head.data) < Integer.parseInt(l1.head.data)){
@@ -12,10 +16,6 @@ public class Merge2SortedLL {
     }
     
     LinkedList merge(LinkedList list1, LinkedList list2){
-        //base cases
-        if(list1.head == null) return list2;
-        if(list2.head == null) return list1;
-
 
         Node prev = list1.head;
         Node curr = prev.next;
