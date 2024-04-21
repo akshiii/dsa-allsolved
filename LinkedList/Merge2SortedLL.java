@@ -47,12 +47,12 @@ public class Merge2SortedLL {
     public static void main(String[] args) {
         LinkedList list1 = new LinkedList();
         list1.addLast("1");
-        list1.addLast("2");
-        list1.addLast("3");
+        // list1.addLast("2");
+        // list1.addLast("3");
         LinkedList list2 = new LinkedList();
         list2.addLast("2");
-        list2.addLast("5");
-        list2.addLast("6");
+        // list2.addLast("5");
+        // list2.addLast("6");
 
         list1.printList();System.out.println("");
         list2.printList();System.out.println("");
