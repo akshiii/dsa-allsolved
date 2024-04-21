@@ -2,7 +2,6 @@
 // 1->2->3->2->1 This is a palindrome, right to left and left to right is same
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FindingPalindrome {
     
