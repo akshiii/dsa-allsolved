@@ -1,6 +1,5 @@
 package StacksAndQueues;
 
-import java.util.Stack;
 
 //Making our own stack class
     class MyStack{
@@ -21,11 +20,15 @@ import java.util.Stack;
             }
         }
 
-        void pop(){
-            if(this.top > 0){
-                top--;
+        int pop(){
+            if(this.top > -1){
+                int result = this.arr[this.top];
+                this.top--;
+                return result;
             }
-            System.out.println("Stack underlfow");
+            else{
+                return -1;
+            }
         }
 
         int peek(){
@@ -36,6 +39,15 @@ import java.util.Stack;
             return this.top > -1 ? false : true;
         }
 
+        public void increment(int k, int val) {
+            int temp = 0;
+            while(temp < k ){   
+                if(temp <= this.top ){
+                    this.arr[temp] = this.arr[temp] + val;
+                }
+                temp++;
+            }
+        }
     }
 
 public class StackExample {
@@ -43,10 +55,11 @@ public class StackExample {
     public static void main(String[] args) {
 
         MyStack myStack1 = new MyStack(5);
+        myStack1.push(1);
+        myStack1.push(2);
         myStack1.push(3);
-        myStack1.push(4);
-        myStack1.push(7);
-        myStack1.pop();
+        
+        myStack1.increment(5, 100);
         System.out.println("");
     }
 }
