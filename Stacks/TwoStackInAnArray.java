@@ -1,4 +1,4 @@
-package StacksAndQueues;
+package Stacks;
 
 //Saving 2 stacks in one array - One stack will start from i=0 and one stack from back, i = array_size.
 class TwoStackArray{

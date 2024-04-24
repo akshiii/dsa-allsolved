@@ -1,4 +1,4 @@
-package StacksAndQueues;
+package Stacks;
 
 
 //Making our own stack class
