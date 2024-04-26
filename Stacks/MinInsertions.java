@@ -23,7 +23,7 @@ public class MinInsertions {
                     if(!stack.isEmpty()){
                         char val2 = stack.pop();
                         if(val2 == '('){
-                            //found a match
+                            //found a match, so we remove the chacaters which are balanced
                         }
                         else{
                             stack.push(val2);
