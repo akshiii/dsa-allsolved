@@ -2,10 +2,14 @@ package Stacks;
 
 import java.util.Stack;
 
-//Minimum cost to make a string valid - 
-// {{{{}} - 1
-// {{{{{{ - 6
-// {{{}} - -1(cannot make odd no of strings valid)
+//Minimum cost to make a string valid - For every opening braces there must be a closing braces, 
+//if not we can convert a open to close brace or close to open brace. We cannot add any more  { or } to the string.
+//Link -> https://www.naukri.com/code360/problem-details/minimum-cost-to-make-string-valid_1115770
+
+// {} //0 //No correction needed, string already correct
+// {{{{}} -> 1 // Only closed braces at second place needs to be corrected then the string would be fine.
+// {{{{{{ -> 6
+// {{{}} -> -1(cannot make odd no of strings valid, then return -1)
 
 public class MakeValidString {
     
