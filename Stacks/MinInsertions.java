@@ -18,20 +18,24 @@ public class MinInsertions {
                 stack.push(ch);
             }
             else{
-                if(ch == ')' && !stack.isEmpty() && stack.lastElement() == '('){
-                    if(i + 1 < s.length()){
-                        char nextChar = s.charAt(i+1);
-                        if(nextChar == ')'){
-                            i++;
-                            stack.pop();
+                if(ch == ')' && !stack.isEmpty() && stack.lastElement() == ')'){
+                    char val1 = stack.pop(); // ')'
+                    if(!stack.isEmpty()){
+                        char val2 = stack.pop();
+                        if(val2 == '('){
+                            //found a match
                         }
-                        else
-                         stack.push(ch);
+                        else{
+                            stack.push(val2);
+                            stack.push(val1);
+                            stack.push(ch);
+                        }   
                     }
                     else{
+                        stack.push(val1);
                         stack.push(ch);
                     }
-                    
+                                     
                 }
                 else
                     stack.push(ch);
@@ -41,7 +45,7 @@ public class MinInsertions {
         if(stack.isEmpty()){
             return 0;
         }
-        System.out.println(stack);
+        //System.out.println(stack);
 
         int count = 0;
         while(!stack.isEmpty()){
@@ -66,7 +70,7 @@ public class MinInsertions {
         String str2 = "))())("; // 3
         String str3 = "()()()()()("; //7 
         String str4 = "(())))"; //0
-        String str5 = "(()()((()()))";
+        String str5 = "(()))(()))()())))"; //1 
         System.out.println(minInsertions(str5));
     }
     
