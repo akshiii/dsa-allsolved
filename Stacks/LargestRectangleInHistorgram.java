@@ -2,6 +2,8 @@ package Stacks;
 
 import java.util.Stack;
 
+
+//TC - O(n)
 public class LargestRectangleInHistorgram {
     
     static int[] nextSmallerElement(int[] arr){
@@ -13,6 +15,7 @@ public class LargestRectangleInHistorgram {
                 stack.pop();
             }
             newArr[i] = stack.lastElement();
+            //Storing elemnet index instaed of values
             stack.push(i);
         }
         return newArr;
@@ -27,6 +30,7 @@ public class LargestRectangleInHistorgram {
                 stack.pop();
             }
             newArr[i] = stack.lastElement();
+             //Storing elemnet index instaed of values
             stack.push(i);
         }
         return newArr;
@@ -34,7 +38,9 @@ public class LargestRectangleInHistorgram {
 
     static int findLargestArea(int[] arr){
 
+        //Finding next smaller elements of arr ( elemnet index)
         int[] nextSmallerEl = nextSmallerElement(arr);
+         //Finding previous smaller elements of arr (elemnet index)
         int[] prevSmallerEl = prevSmallerElement(arr);
 
         int area = 0;
