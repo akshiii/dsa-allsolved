@@ -2,7 +2,7 @@ package Stacks;
 
 import java.util.Stack;
 
-//Design a stack that supports getMin() in O(1) time and O(1) space complexicity.
+//Design a stack that supports getMin() in O(1) time and O(1) space complexity.
 class MinStack{
     Stack<Integer> stack;
     int mini;
