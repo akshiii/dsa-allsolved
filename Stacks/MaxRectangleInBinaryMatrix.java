@@ -62,9 +62,9 @@ public class MaxRectangleInBinaryMatrix {
 
     static int findMaxRectangleInMatrix(int[][] arr){
         int maxArea = 0;
-        int[] histogram = new int[arr.length];
+        int[] histogram = new int[arr[0].length];
         for(int i = 0; i< arr.length; i++){
-            for(int j = 0; j< arr.length; j++){
+            for(int j = 0; j< arr[i].length; j++){
                 if(i == 0){
                     histogram[j] = arr[i][j];
                 }
@@ -98,12 +98,21 @@ public class MaxRectangleInBinaryMatrix {
             {1,1,0,0},
         };
         int[][] mainArr1 = {
-            {0,1,1,0},
-            {1,1,1,0},
-            {0,1,1,0},
-            {1,1,0,0},
+            {0,1,1,0,1},
+            {1,1,1,0,0},
+            {0,1,1,0,0},
+            {1,1,0,0,1},
         };
-        System.out.println("Max area = "+findMaxRectangleInMatrix(mainArr));
+        int[][] mainArr2 = {
+            {1,0,1,0,0},
+            {1,0,1,1,1},
+            {1,1,1,1,1},
+            {1,0,0,1,0},
+        };
+
+
+        System.out.println("Max area = "+findMaxRectangleInMatrix(mainArr2));
+
     }
     
 }
