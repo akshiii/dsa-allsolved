@@ -3,6 +3,7 @@ package Stacks;
 import java.util.Stack;
 
 //Finding max rectangle in binary matrix
+//Leetcode- https://leetcode.com/problems/maximal-rectangle/description/
 public class MaxRectangleInBinaryMatrix {
 
         
