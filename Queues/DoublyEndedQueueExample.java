@@ -12,7 +12,7 @@ class DoublyEndedQueue{
     }
 
     boolean push_front(int data){
-        if(this.isEmpty()){
+        if(this.isFull()){
             System.out.println("Queue is full");
             return false;
         }
@@ -36,7 +36,7 @@ class DoublyEndedQueue{
 
     //same as push() from circular queue
     boolean push_back(int data){
-        if((this.front == 0 && this.rear == this.arr.length -1) || (this.rear == (this.front -1) % (this.arr.length -1))){
+        if(isFull()){
             //Queue is full
             System.out.println("Queue is full");
             return false;
@@ -59,7 +59,7 @@ class DoublyEndedQueue{
 
     //same logic as circluar queue pop()
     int pop_front(){
-        if(this.front == -1 && this.rear == -1){
+        if(isEmpty()){
             //Queue is empty;
             return -1;
         }
@@ -91,8 +91,8 @@ class DoublyEndedQueue{
             System.out.println("Queue is full");
             return -1;
         }
-        int val =  this.arr[this.front];
-
+        int val =  this.arr[this.rear];
+        this.arr[this.rear] = -1;
         if(this.front == 0 && this.rear == 0){
             //single el
             this.front = -1;
@@ -108,13 +108,46 @@ class DoublyEndedQueue{
     }
 
     boolean isEmpty(){
-        if( (this.front == 0 && this.rear == this.arr.length -1) || (this.rear == (this.front -1) % (this.arr.length -1))){
+        if( this.front == -1 ){
             return true;
         }
         return false;
     }
+
+    boolean isFull(){
+        if((this.front == 0 && this.rear == this.arr.length -1) || (this.front!= 0 && this.rear == (this.front -1) % (this.arr.length -1))){
+            return true;
+        }
+        return false;
+    }
+
+    int getFront() 
+    {
+        if(this.isEmpty()){
+            return -1;
+        }
+        return this.arr[this.front];
+    }
+
+    // Returns the last element of the deque. If the deque is empty, it returns -1.
+    int getRear() 
+    {
+         if(this.isEmpty()){
+            return -1;
+        }
+        return this.arr[this.rear];
+    }
 }
 
 public class DoublyEndedQueueExample {
-    
+    public static void main(String[] args) {
+        DoublyEndedQueue deque = new DoublyEndedQueue(5);
+        System.out.println(deque.isEmpty());
+        System.out.println(deque.push_front(10));
+        System.out.println(deque.push_front(20));
+        System.out.println(deque.push_back(30));
+        System.out.println(deque.getFront());
+        System.out.println(deque.pop_back());
+        System.out.println(deque.pop_back());
+    }   
 }
