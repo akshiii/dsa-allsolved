@@ -119,21 +119,21 @@ class CircularQueue{
 public class MyQueue {
     
     public static void main(String[] args) {
-        // Queue<Integer> queue = new PriorityQueue<>();
-        // queue.add(1);
-        // queue.add(2);
-        // queue.add(3);
-        // queue.add(4);
-        // System.out.println(queue.remove());
+        Queue<Integer> queue = new PriorityQueue<>();
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
+        System.out.println(queue.remove());
         
-        // ArrayQueue arrayQueue = new ArrayQueue(4);
-        // arrayQueue.push(1);
-        // arrayQueue.push(2);
-        // arrayQueue.push(3);
-        // System.out.println("Empty? "+arrayQueue.isEmpty());
-        // System.out.println("Pop= "+arrayQueue.pop());
-        // arrayQueue.push(4);
-        // arrayQueue.push(5);
+        ArrayQueue arrayQueue = new ArrayQueue(4);
+        arrayQueue.push(1);
+        arrayQueue.push(2);
+        arrayQueue.push(3);
+        System.out.println("Empty? "+arrayQueue.isEmpty());
+        System.out.println("Pop= "+arrayQueue.pop());
+        arrayQueue.push(4);
+        arrayQueue.push(5);
 
         CircularQueue circularQueue = new CircularQueue(3);
         System.out.println(circularQueue.isEmpty());
