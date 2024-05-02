@@ -49,9 +49,9 @@ public class FirstNegativeIntegerInWidnow {
     }
 
     public static void main(String[] args) {
-        int[] arr = {-8, 2, 3, -6, 10};
-        int k = 2; //ans - [-8, 0 , -6, -6]
-        // int k = 3; //ans = [-8 -6 -6]
+        int[] arr = {8, -2, 3, -6, 10};
+        int k = 2; //ans - [-2, -2, -6, -6]
+        // int k = 3; //ans = [-2, -2, -6]
         int[] newArr = findFirstNegetive(arr, k);
         for(int i = 0; i< newArr.length ; i++){
             System.out.print(newArr[i]+" , ");
