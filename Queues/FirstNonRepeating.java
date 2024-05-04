@@ -12,50 +12,30 @@ public class FirstNonRepeating {
     static String findNonRepeating(String A){
         String newStr = "";
         int[] arr = new int[26];
-       
         Queue<Character> queue = new LinkedList();
         
-
         for(int i = 0; i< A.length(); i++){
             char ch = A.charAt(i);
             int asciiValue = ch & 0xFF;
             arr[asciiValue - 97] = arr[asciiValue - 97] + 1;
-            if(arr[asciiValue - 97] > 1){
-                if(!queue.isEmpty()){
 
-                    char peek = queue.peek();
-                    int asciiPeek = peek & 0xFF;
-                    if(arr[asciiPeek - 97] > 1 ){
-                        // Is my peek value > 1? repeated twice?
-                        isNonRepeating(queue,arr);
-                        if(!queue.isEmpty()){
-                            peek = queue.peek();
-                            if(peek != ch){
-                                newStr = newStr + peek;
-                            }
-                            else{
-                                queue.remove();
-                                if(queue.isEmpty()){
-                                    newStr = newStr + "#";
-                                }
-                                else{
-                                    newStr = newStr + queue.peek();
-                                }
-                            }
-                        }
-                        else{
-                            newStr = newStr + "#";
-                        }
+            if(arr[asciiValue - 97] > 1){
+                //Repeating
+                if(!queue.isEmpty()){
+                    isNonRepeating(queue,arr);
+                    if(queue.isEmpty()){
+                        newStr = newStr + "#";
                     }
                     else{
-                        newStr = newStr + peek;
-                    }
+                        newStr = newStr + queue.peek();
+                    } 
                 }
                 else{
                     newStr = newStr + "#";
                 }
             }
             else{ 
+                //Non Repeating
                 queue.add(ch);
                 newStr = newStr + queue.peek();
             }
@@ -83,11 +63,11 @@ public class FirstNonRepeating {
     }
     
     public static void main(String[] args) {
-        String str = "aabcdefb";
+        String str = "aabcdefb"; // a#bbbbbc
         String str1 = "yewaahkpuo"; //yyyyyyyyyy
-        String str2 = "yeewyrv"; 
-        String str3 = "blybjrzbbyivawvdesebvusjnijimtzkuzdtfkpkpuyjynzxmapwzvrxpluuzbftozbqedqwtlvvnexfvualb";
-        String newStr = findNonRepeating(str3);
+        String str2 = "yeweyrv"; //yyyywww 
+        String str3 = "blybjrzbbyivawvdesebvusjnijimtzkuzdtfkpkpuyjynzxmapwzvrxpluuzbftozbqedqwtlvvnexfvualb"; //bbbllllllllllllllllllllllllllllllllllllllllllllllllllllllfffff##ooooooooooooooooooooo
+        String newStr = findNonRepeating(str);
         System.out.println("Non repeating string = "+newStr);
     }
 }
