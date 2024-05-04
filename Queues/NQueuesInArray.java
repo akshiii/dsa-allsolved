@@ -80,12 +80,18 @@ class NQueues {
         //update new freeslot
         this.freespot = index;
 
-        return arr[index];
+        return this.arr[index];
     }
     
 }
 public class NQueuesInArray {
     public static void main(String[] args) {
-        
+        NQueues nQueues = new NQueues(10, 3);
+        nQueues.enqueue(10, 1);
+        nQueues.enqueue(20, 1);
+        nQueues.enqueue(30, 2);
+        nQueues.enqueue(40, 1);
+        System.out.println(nQueues.dequeue(1));
+
     }
 }
