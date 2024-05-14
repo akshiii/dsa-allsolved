@@ -2,7 +2,7 @@ var findMin = function (nums) {
   let start = 0,
     end = nums.length;
 
-  let mid;
+  let mid = Math.floor((start + end) / 2);
 
   if (start > end) return -1;
 
@@ -22,4 +22,5 @@ var findMin = function (nums) {
 
   return nums[start];
 };
-findMin([7, 9, 1, 2, 3]);
+console.log(findMin([2, 1]));
+// console.log(findMin([4, 2, 3]));
