@@ -35,6 +35,11 @@ public class BinaryTreeExample {
         return root;
     }
 
+    
+    static void levelOrderTraversal(){
+
+    }
+
     public static void main(String[] args) {
         node root = new node(0);
         createBinaryTree(root);
