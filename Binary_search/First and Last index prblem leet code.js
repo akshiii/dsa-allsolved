@@ -1,4 +1,7 @@
 let a = [0, 0, 2, 2, 2, 3, 4];
+lastOccurance(a, 2);
+
+firstOccurance(a, 2);
 
 const firstOccurance = (arr, key) => {
   let ans = -1;
@@ -49,7 +52,3 @@ const lastOccurance = (arr, key) => {
 
   console.log(ans);
 };
-
-lastOccurance(a, 2);
-
-firstOccurance(a, 2);
