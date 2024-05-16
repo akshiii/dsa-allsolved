@@ -1,3 +1,4 @@
+// Leetcode 410 - https://leetcode.com/problems/split-array-largest-sum/
 let allocateBooks = (arr, students) => {
   let start = 0,
     sum = 0;
@@ -11,7 +12,7 @@ let allocateBooks = (arr, students) => {
 
   let mid = Math.floor((start + end) / 2);
 
-  while (start < end) {
+  while (start <= end) {
     if (isPossibleSolution(arr, students, mid)) {
       ans = mid;
       end = mid - 1;
@@ -42,4 +43,5 @@ let isPossibleSolution = (arr, students, mid) => {
   return true;
 };
 
-console.log(allocateBooks([1, 2, 3, 4], 3));
+// console.log(allocateBooks([1, 2, 3, 4], 3));
+console.log(allocateBooks([2, 3, 1, 2, 4, 3], 5)); //op- 4
