@@ -36,6 +36,7 @@ public class BinaryTreeExample {
     }
 
     
+    //Breadth first search
     static void levelOrderTraversal(){
 
     }
