@@ -1,5 +1,7 @@
 package BinaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 class node{
@@ -37,14 +39,29 @@ public class BinaryTreeExample {
 
     
     //Breadth first search
-    static void levelOrderTraversal(){
+    static void levelOrderTraversal(node root){
+        Queue<node> queue = new LinkedList();
+        queue.add(root);
 
+        while(!queue.isEmpty()){
+            node temp = queue.remove();
+            System.out.print(" => "+temp.data);
+
+            if(temp.left != null){
+                queue.add(temp.left);
+            }
+
+            if(temp.right != null){
+                queue.add(temp.right);
+            }
+        }        
     }
 
     public static void main(String[] args) {
         node root = new node(0);
-        createBinaryTree(root);
+        node newRoot = createBinaryTree(root);
         System.out.println("Done!!");
+        levelOrderTraversal(newRoot);
 
     }
 }
