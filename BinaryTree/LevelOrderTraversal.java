@@ -15,6 +15,9 @@ public class LevelOrderTraversal {
         List<List<Integer>> levelOrderList = new ArrayList<>();
         List<Integer> smallList = new ArrayList<>();
         Queue<node> queue = new LinkedList();
+        if(root == null){
+            return levelOrderList;
+        }
         queue.add(root);
         queue.add(null);
 
