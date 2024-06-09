@@ -42,19 +42,30 @@ public class BinaryTreeExample {
     static void levelOrderTraversal(node root){
         Queue<node> queue = new LinkedList();
         queue.add(root);
+        queue.add(null);
 
         while(!queue.isEmpty()){
             node temp = queue.remove();
-            System.out.print(" => "+temp.data);
-
-            if(temp.left != null){
-                queue.add(temp.left);
+            
+            if(temp == null){
+                if(!queue.isEmpty()){
+                    queue.add(null);
+                }
+                System.out.println();
             }
 
-            if(temp.right != null){
-                queue.add(temp.right);
-            }
-        }        
+            else{
+                System.out.print(" "+temp.data);
+                if(temp.left != null){
+                    queue.add(temp.left);
+                }
+
+                if(temp.right != null){
+                    queue.add(temp.right);
+                }
+            }      
+        }
+              
     }
 
     public static void main(String[] args) {
