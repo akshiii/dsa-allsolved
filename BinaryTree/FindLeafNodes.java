@@ -1,21 +1,20 @@
 package BinaryTree;
 
-//Unsloved
 //Finding no of leaf nodes in B Tree
 public class FindLeafNodes {
 
-    static void totalLeafNodes(node root,int leaf){
+    static int totalLeafNodes(node root){
         if(root == null){
-            return;
+            return 1;
         }
         if(root.left == null && root.right == null){
-            leaf++;
+            return 1;
         }
-        totalLeafNodes(root.left,leaf);
-        totalLeafNodes(root.right,leaf);
+        return totalLeafNodes(root.left) + totalLeafNodes(root.right);
     }
 
     public static void main(String[] args) {
+        //ans - 3
         node root = new node(3);
         root.left = new node(9);
         root.right = new node(20);
@@ -23,8 +22,16 @@ public class FindLeafNodes {
         root.left.right = null;
         root.right.left = new node(15);
         root.right.right = new node(7);
-        int leaf = 0;
-        totalLeafNodes(root,leaf);
-        System.out.print("total leafs = "+leaf);
+
+        //ans - 4
+
+        // node root = new node(1);
+        // root.left = new node(3);
+        // root.right = new node(5);
+        // root.left.left = new node(7);
+        // root.left.right = new node(11);
+        // root.right.left = new node(17);
+        // root.right.right = null;
+        System.out.print("total leafs = " + totalLeafNodes(root));
     }
 }
