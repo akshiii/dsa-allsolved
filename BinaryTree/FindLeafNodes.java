@@ -5,7 +5,7 @@ public class FindLeafNodes {
 
     static int totalLeafNodes(node root){
         if(root == null){
-            return 1;
+            return 0;
         }
         if(root.left == null && root.right == null){
             return 1;
