@@ -1,6 +1,7 @@
 package BinaryTree;
 
 //Check if 2 trees are identical
+// TC == O(n) as we are visiting every node only 1 time
 public class IdenticalTrees {
 
     static boolean isIdentical(node r1 , node r2){
