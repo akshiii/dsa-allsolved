@@ -10,16 +10,6 @@ class Pair {
     }
 }
 
-class PairOfInt {
-    int first;
-    int second;
-
-    public PairOfInt(int first, int second) {
-        this.first = first;
-        this.second = second;
-    }
-}
-
 //Checking if a tree is balanced or not
 public class BalancedBT {
 
