@@ -1,8 +1,56 @@
 package BinaryTree;
 
+class Pair {
+    boolean first;
+    int second;
+
+    public Pair(boolean first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+
+class PairOfInt {
+    int first;
+    int second;
+
+    public PairOfInt(int first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
 
 //Checking if a tree is balanced or not
 public class BalancedBT {
+
+    static Pair isBalancedFast(node root) {
+        if( root == null){
+            Pair p = new Pair(true, 0);
+            return p;
+        }
+
+        Pair left = isBalancedFast(root.left);
+        Pair right = isBalancedFast(root.right);
+
+        boolean leftAns = left.first;
+        boolean rightAns = right.first;
+
+        boolean diff = Math.abs(left.second - right.second) <= 1;
+
+        Pair ans = new Pair(false, 0);
+        ans.second = max(left.second, right.second) + 1;
+        if(leftAns && rightAns && diff){
+            ans.first = true;
+        }
+        else{
+            ans.first = false;
+        }
+        return ans;
+    }
+
+    static boolean balanced(node root){
+        return isBalancedFast(root).first;
+    }
 
     //Unoptimized approach
     static boolean isBalanced(node root) {
@@ -50,7 +98,7 @@ public class BalancedBT {
         root.left.right = null;
         root.right.left = new node(15);
         root.right.right = new node(7); 
-        root.right.left.left = new node(4);
+        // root.right.left.left = new node(4);
 
         System.out.println("is balanced? = "+isBalanced(root));
     }
