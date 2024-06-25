@@ -29,7 +29,7 @@ public class ZigZagTraversal {
                 node frontNode = queue.remove();
 
                 //normal insert of reverse insert
-                // int index = leftToRight ? i : size - i -1;
+                int index = leftToRight ? i : size - i -1;
                 System.out.print(frontNode.data+" ");
                 smallList.add(frontNode.data);
 
@@ -74,6 +74,8 @@ public class ZigZagTraversal {
         root.right.right.right = new node(2);
         root.right.left.left = new node(5);
         root.right.left.right = new node(4);
+        //ans - 3, 20 9 , 6 1 15 7 , 2 8 4 5
+
         List<List<Integer>> list = zigzagLevelOrder(root);
 
     }
