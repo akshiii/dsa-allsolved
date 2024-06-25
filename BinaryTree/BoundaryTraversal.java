@@ -64,11 +64,11 @@ public class BoundaryTraversal {
 
         if(root.left != null && root.right == null){
             printRightNodes(root.left);
-            System.out.print( root.data + " , ");
+            System.out.print( root.data + " , "); //Printing right nodes in reverse
         }
         else{
             printRightNodes(root.right);
-            System.out.print( root.data + " , ");
+            System.out.print( root.data + " , "); //Printing right nodes in reverse
         }
     }
 
