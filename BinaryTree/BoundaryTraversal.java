@@ -5,7 +5,15 @@ import java.util.List;
 
 public class BoundaryTraversal {
     
-    static void printBoundaryTraversal(node root){
+    static void printBoundary(node root){
+        printLeftNodes(root);
+        // System.out.println("");
+        printLeafNodes(root);
+        // System.out.println("");
+        printRightNodes(root.right);
+    }
+
+    static void printLeftNodes(node root){
         List<Integer> leftNodes = new ArrayList<>();
         
         if( root == null){
@@ -19,30 +27,49 @@ public class BoundaryTraversal {
 
         if(root.left == null && root.right != null){
             //right node
+            System.out.print( root.data + " , ");
             leftNodes.add(root.data);
-            printBoundaryTraversal(root.left);
+            printLeftNodes(root.right);
             return;
         }
         else{
+            System.out.print( root.data + " , ");
             leftNodes.add(root.data);
-            printBoundaryTraversal(root.left);
+            printLeftNodes(root.left);
         }
     }
 
-    static void printLeftNodes(node root){
+    static void printLeafNodes(node root){
+        if( root == null){
+            return;
+        }
+
+        
+        if(root.left == null && root.right == null){
+            //leaf node
+            System.out.print( root.data + " , ");
+        }
+        printLeafNodes(root.left);
+        printLeafNodes(root.right);
+    }
+
+    static void printRightNodes(node root){
         if(root == null){
             return;
         }
+
         if(root.left == null && root.right == null){
             return;
         }
 
-        System.out.print( root.data + " , ");
-        printLeftNodes(root.left);
-    }
-
-    static void printLeafNodes(node root){
-
+        if(root.left != null && root.right == null){
+            printRightNodes(root.left);
+            System.out.print( root.data + " , ");
+        }
+        else{
+            printRightNodes(root.right);
+            System.out.print( root.data + " , ");
+        }
     }
 
     public static void main(String[] args) {
@@ -56,10 +83,7 @@ public class BoundaryTraversal {
         root.right.right = new node(7);
         root.right.right.right = new node(9);
         root.right.right.right.left = new node(10);
-        root.right.right.right.right = new node(11);
-
-
-        //ans 1 2 3 6 8 10 11 9 7 4
-        printBoundaryTraversal(root);
+        root.right.right.right.right = new node(11);//ans 1 2 3 6 8 10 11 9 7 4
+        printBoundary(root);
     }
 }
