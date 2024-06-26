@@ -61,5 +61,14 @@ public class LevelOrderTraversal {
         root.right.right = new node(7);
         levelOrder(root);
 
+
+        //For printing List of List
+        // List<List<Integer>> list;
+        // for (List<Integer> li : list) {
+        //     for (int i : li) {
+        //         System.out.print(i + " ");
+        //     }
+        //     System.out.println(" ");
+        // }
     }
 }
