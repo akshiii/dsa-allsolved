@@ -1,6 +1,8 @@
 package BinaryTree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,6 +35,24 @@ public class VerticalTraversal {
             list.add(frontNode.data);
             map.put(level,list);
             nodes.put(hd, map);
+
+            if(frontNode.left != null){
+                PairNode pair = new PairNode(frontNode.left, new PairInt(hd - 1, level+1));
+                queue.add(pair);
+            }
+
+            if(frontNode.right != null){
+                PairNode pair = new PairNode(frontNode.right, new PairInt(hd + 1, level+1));
+                queue.add(pair);
+            }
+        }
+
+        for (Map.Entry<Integer,Map<Integer, List<Integer>>> li : nodes.entrySet()) {
+            System.out.println(nodes.keySet());
+            for (Map.Entry<Integer, List<Integer>> l : li.getValue().entrySet()) {
+                System.out.println(l.getKey());
+                System.out.println(l.getValue());
+            }
         }
 
         return ans;
