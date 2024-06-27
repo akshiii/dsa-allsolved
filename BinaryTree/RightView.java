@@ -19,9 +19,9 @@ class PairNodeLevel{
     }
 }
 
-class LeftView {
+class RightView {
 
-    static List<Integer> getLeftView(node root){
+    static List<Integer> getRightView(node root){
         Map<Integer , Integer> nodes = new HashMap<>();
         Queue<PairNodeLevel> queue = new LinkedList();
         List<Integer> ans = new ArrayList<>();
@@ -38,9 +38,9 @@ class LeftView {
             node frontNode = temp.node;
             int level = temp.level;
 
-            if(nodes.get(level) == null){ // Putting this condition as once we get left most value we will ignore values that come after
+            // if(nodes.get(level) == null){ // Removing this condition as once we get a value for any level most value we want the right most value for that level, so we override it
                 nodes.put(level, frontNode.data);
-            }
+            // }
 
         
             if(frontNode.left != null){
@@ -77,7 +77,7 @@ class LeftView {
         // ans = 1 2 3 7 9
         
 
-        List<Integer> list = getLeftView(root);
+        List<Integer> list = getRightView(root);
         for (int li : list) {
             System.out.print(li+" ");
         }
