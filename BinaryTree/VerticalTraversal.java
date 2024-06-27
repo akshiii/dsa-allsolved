@@ -11,7 +11,6 @@ import java.util.Queue;
 import java.util.Iterator;
 
 
-//Unsolved
 public class VerticalTraversal {
 
     static List<Integer> verticalList(node root){
