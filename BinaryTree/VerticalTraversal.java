@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Iterator;
+
 
 //Unsolved
 public class VerticalTraversal {
@@ -30,12 +32,25 @@ public class VerticalTraversal {
             int hd = temp.pairint.hd;
             int level = temp.pairint.level;
 
-            Map<Integer, List<Integer>> map = new HashMap<>();
-            List<Integer> list = new ArrayList<>();
-            list.add(frontNode.data);
-            map.put(level,list);
-            nodes.put(hd, map);
+            if(nodes.get(hd) != null){
+                //If a hd already exists, add to the same list
+                Map<Integer, List<Integer>> oldMap = nodes.get(hd);
+                Iterator<Integer> iterator = oldMap.keySet().iterator();
+                if (iterator.hasNext()) {
+                    int i = iterator.next();
+                    List<Integer> li = oldMap.get(i);
+                    li.add(frontNode.data);
+                }
+            }
+            else{
+                Map<Integer, List<Integer>> map = new HashMap<>();
+                List<Integer> list = new ArrayList<>();
+                list.add(frontNode.data);
+                map.put(level,list);
+                nodes.put(hd, map);
+            }
 
+        
             if(frontNode.left != null){
                 PairNode pair = new PairNode(frontNode.left, new PairInt(hd - 1, level+1));
                 queue.add(pair);
@@ -47,11 +62,15 @@ public class VerticalTraversal {
             }
         }
 
-        for (Map.Entry<Integer,Map<Integer, List<Integer>>> li : nodes.entrySet()) {
-            System.out.println(nodes.keySet());
-            for (Map.Entry<Integer, List<Integer>> l : li.getValue().entrySet()) {
-                System.out.println(l.getKey());
-                System.out.println(l.getValue());
+        //Sorting the hd and storing all nodes in ans list
+        List<Integer> keys = new ArrayList<>(nodes.keySet());
+        Collections.sort(keys);
+        for (int val : keys) {
+            Map<Integer, List<Integer>> map = nodes.get(val);
+            for (Map.Entry<Integer, List<Integer>> li : map.entrySet()) {
+                for (int i : li.getValue()) {
+                    ans.add(i);
+                }
             }
         }
 
