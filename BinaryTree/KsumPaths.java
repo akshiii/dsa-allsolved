@@ -1,34 +1,34 @@
 package BinaryTree;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
 
-//TODO: Unsolved - https://www.youtube.com/watch?v=QG0hE0R_ng4&list=PLDzeHZWIZsTo87y1ytEAqp7wYlEP3nner&index=5
 public class KsumPaths {
     public static int count;
 
-    static void paths(node root, int k , Queue<Integer> queue){
+    static void paths(node root, int k , ArrayList<Integer> path){
         if(root == null){
             return ;
         }
-        queue.add(root.data);
+        path.add(root.data);
 
-        paths(root.left, k, queue);
-        paths(root.right, k, queue);
+        paths(root.left, k, path);
+        paths(root.right, k, path);
 
         int sum = 0;
-        while(!queue.isEmpty()){
-            sum = sum + queue.remove();
+        int size = path.size();
+        for(int i = size - 1; i >= 0 ; i--){
+            sum = sum + path.get(i);
             if(sum == k){
                 count++;
             }
         }
+        path.remove(size - 1);
     }
 
     static int getTotalPaths(node root, int k){
-        Queue<Integer> queue = new LinkedList();
+        ArrayList<Integer> path = new ArrayList<Integer>(); // Create an ArrayList object
         count = 0;
-        paths(root, k, queue);
+        paths(root, k, path);
         return count;
     }
 
