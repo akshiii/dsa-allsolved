@@ -43,8 +43,7 @@ public class LowestCommonAncestor {
         root.right.right = new node(3);
         root.right.left.left = new node(2);
 
-        // node ans = getLCA(root,3,2); //6
-        node ans = getLCA(root,1,3); //6
+        node ans = getLCA(root,3,2); //6
         System.out.println(ans.data);
     }
 }
