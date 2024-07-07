@@ -33,7 +33,7 @@ public class KAncestorInTree {
     static int getKAncestor(node root,int n1, int k){
         ArrayList<Integer> path = new ArrayList<Integer>(); // Create an ArrayList object
         kAnces(root, n1,path);
-        if(path.size() == 1){
+        if(path.size() <= k){
             return -1;
         }
         return path.get(k);        
