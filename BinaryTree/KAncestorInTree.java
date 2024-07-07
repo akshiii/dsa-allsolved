@@ -7,22 +7,36 @@ import java.util.ArrayList;
  */
 public class KAncestorInTree {
 
-    public static void kthAncestor(node root,ArrayList<Integer> arr, int n1, int k){
+    static node kAnces(node root, int k, ArrayList<Integer> arr){
         if(root == null){
-            return ;
-        }
-        if(root.data == n1){
-            return ;
+            return null;
         }
 
-        arr.add(root.data);
-
-        kthAncestor(root.left,arr, n1, k);
-        kthAncestor(root.right,arr, n1, k);
-
-        if(root.data == n1){
-            return ;
+        if(root.data == k ){
+            System.out.println(root.data);
+            arr.add(root.data);
+            return root;
         }
+
+        node leftAns = kAnces(root.left, k, arr);
+        node rightAns = kAnces(root.right, k,arr);
+
+        if((leftAns != null || rightAns!= null) && !arr.isEmpty()){
+            arr.add(root.data);
+            return root;
+        }
+        else{
+            return null;
+        }
+    }
+
+    static int getKAncestor(node root,int n1, int k){
+        ArrayList<Integer> path = new ArrayList<Integer>(); // Create an ArrayList object
+        kAnces(root, n1,path);
+        if(path.size() == 1){
+            return -1;
+        }
+        return path.get(k);        
     }
 
     public static void main(String[] args) {
@@ -35,8 +49,7 @@ public class KAncestorInTree {
         root.right.right = new node(3);
         root.right.left.left = new node(2);
 
-        ArrayList<Integer> arr = new ArrayList<Integer>();
-        kthAncestor(root,arr,3, 2); // Find 2nd ancestor of 3
-        System.out.println(arr.get(arr.size() -1 - 2));
+        
+        System.out.println("Ancestor = "+getKAncestor(root,2, 3)); // Find 2nd ancestor of 3
     }
 }
