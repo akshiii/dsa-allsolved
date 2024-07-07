@@ -86,7 +86,7 @@ public class KAncestorInTree {
         root.right.left.left = new node(2);
 
         kth = 3;
-        System.out.println("Ancestor approach 2= "+approach2(root,2).data);
+        System.out.println("Ancestor approach 2 = "+approach2(root,2).data);
 
         System.out.println("Ancestor = "+getKAncestor(root,2, 3)); // Find 2nd ancestor of 3
     }
