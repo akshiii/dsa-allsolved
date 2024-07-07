@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * K th ancestor in a BT
  */
 public class KAncestorInTree {
+    public static int kth;
 
     /**
      * Here we are traversing the tree from root to k(our destination node) then as we find it,
@@ -18,7 +19,6 @@ public class KAncestorInTree {
         }
 
         if(root.data == k ){
-            System.out.println(root.data);
             arr.add(root.data);
             return root;
         }
@@ -44,6 +44,37 @@ public class KAncestorInTree {
         return path.get(k);        
     }
 
+    static node approach2(node root, int n1){
+        if(root == null){
+            return null;
+        }
+
+        if(root.data == n1){
+            return root;
+        }
+
+        node leftAns = approach2(root.left, n1);
+        node rightAns = approach2(root.right, n1);
+
+        if(leftAns != null && rightAns == null){
+            kth--;
+            if(kth <= 0){
+                return root;
+            }
+            return leftAns;
+        }
+
+        if(rightAns != null && leftAns == null){
+            kth--;
+            if(kth <= 0){
+                return root;
+            }
+            return rightAns;
+        }
+
+        return null;
+    }
+
     public static void main(String[] args) {
         node root = new node(4);
         root.left = new node(9);
@@ -54,7 +85,9 @@ public class KAncestorInTree {
         root.right.right = new node(3);
         root.right.left.left = new node(2);
 
-        
+        kth = 3;
+        System.out.println("Ancestor approach 2= "+approach2(root,2).data);
+
         System.out.println("Ancestor = "+getKAncestor(root,2, 3)); // Find 2nd ancestor of 3
     }
 }
