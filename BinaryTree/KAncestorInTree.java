@@ -7,6 +7,11 @@ import java.util.ArrayList;
  */
 public class KAncestorInTree {
 
+    /**
+     * Here we are traversing the tree from root to k(our destination node) then as we find it,
+     * we will store the path from that node till root node, in a reverse manner in an array.
+     * This basic approach to traverse a tree must be remembered always.
+     */
     static node kAnces(node root, int k, ArrayList<Integer> arr){
         if(root == null){
             return null;
