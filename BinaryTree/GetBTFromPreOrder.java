@@ -8,6 +8,9 @@ import java.util.ArrayList;
 public class GetBTFromPreOrder {
     public static int index = 0;
 
+    static int findPositionOfRoot(ArrayList<Integer> inorder, int element){
+        return inorder.indexOf(element);
+    }
     static node solve(ArrayList<Integer> inorder, ArrayList<Integer> preorder, int inorderStart, int inorderEnd, int n){
 
         //base case
@@ -18,12 +21,23 @@ public class GetBTFromPreOrder {
         int element = preorder.get(index++);
 
         node root = new node(element);
+        int position = findPositionOfRoot(inorder, element);
 
-        root.left = solve(inorder, preorder,inorderStart, element -1, n);
-        root.right = solve(inorder, preorder, element + 1, inorderEnd, n);
+        root.left = solve(inorder, preorder, inorderStart, position -1, n);
+        root.right = solve(inorder, preorder, position + 1, inorderEnd, n);
 
         return root;
     }
+
+    static void PostOrder(node root){
+        if(root == null){
+            return;
+        }
+        PostOrder(root.left);
+        PostOrder(root.right);
+        System.out.print(root.data+ " ");
+    }
+
     public static void main(String[] args) {
         ArrayList<Integer> inorder = new ArrayList<>();
         inorder.add(3);
@@ -44,6 +58,6 @@ public class GetBTFromPreOrder {
         int n = 6;
 
         node ans = solve(inorder, preorder,0, n-1 , n);
-        System.out.println(ans.data);
+        PostOrder(ans);
     }
 }
