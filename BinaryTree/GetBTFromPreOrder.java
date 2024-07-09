@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Get binary tree from inorder and preorder
+ * Solved - https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
  */
 public class GetBTFromPreOrder {
     public static int index = 0;
@@ -54,10 +55,9 @@ public class GetBTFromPreOrder {
         preorder.add(4);
         preorder.add(2);
         preorder.add(5);
-
-        int n = 6;
-
-        node ans = solve(inorder, preorder,0, n-1 , n);
+        int n = inorder.size();
+        node ans = solve(inorder, preorder,0, n-1 , n); // 3 4 1 5 2 0
+        
         PostOrder(ans);
     }
 }
