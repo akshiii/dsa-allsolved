@@ -24,7 +24,8 @@ public class GetBTFromPostorder {
         node root = new node(element);
         int position = findPositionOfRoot(inorder, element);
 
-        root.right = solve(inorder, postorder, position + 1, inorderEnd, n);
+        root.right = solve(inorder, postorder, position + 1, inorderEnd, n); 
+        //Catch here - call for right sub tree will be made first as with post order LRN from back R comes first then L comes
         root.left = solve(inorder, postorder, inorderStart, position -1, n);
         
 
