@@ -14,6 +14,22 @@ class node{
 
 public class InsertInBST {
 
+    static node insertUsingRecursion(node root, int val){
+        //base case
+        if(root == null){
+            root = new node(val);
+            return root;
+        }
+
+        if(val > root.data){
+            root.right =  insertUsingRecursion(root.right, val);
+        }
+        else{
+            root.left =  insertUsingRecursion(root.left, val);
+        }
+        return root;
+    }
+
     static node insert(node root, int val) {
         if(root == null){
             root = new node(val);
@@ -53,7 +69,8 @@ public class InsertInBST {
         root.right.left = new node(8);
 
         int valueToInsert = 4;
-        insert(root, valueToInsert);
+        // insert(root, valueToInsert);
+        insertUsingRecursion(root, valueToInsert);
         System.out.println(root);
     }
 }
