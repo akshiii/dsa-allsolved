@@ -14,6 +14,7 @@ class node{
 
 public class InsertInBST {
 
+    //Recursive way
     static node insertUsingRecursion(node root, int val){
         //base case
         if(root == null){
@@ -30,6 +31,7 @@ public class InsertInBST {
         return root;
     }
 
+    //Iterative way
     static node insert(node root, int val) {
         if(root == null){
             root = new node(val);
