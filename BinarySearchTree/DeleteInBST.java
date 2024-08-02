@@ -59,6 +59,45 @@ public class DeleteInBST {
         return min(temp.right);
     }
 
+    static node delete(node root, int val){
+        if(root == null){
+            return root;
+        }
+
+        if(root.data == val){
+            //0 child
+            if(root.left == null && root.right == null){
+                return null;
+            }
+
+            //1 child -> has 2 cases
+              // only left child
+              if(root.left != null && root.right == null){
+                return root.left;
+              }
+
+              //only right child
+              if(root.left == null && root.right != null){
+                return root.right;
+              }
+
+            //2 child
+            if(root.left != null && root.right != null){
+                return min(root.right);
+            }
+
+        }
+        else if(root.data > val){
+            root.left = delete(root.left, val);
+            return root;
+        }
+        else{
+            root.right = delete(root.right, val);
+            return root;
+        }
+        return root;
+    }
+
     public static void main(String[] args) {
         node root = new node(5);
         root.left = new node(3);
@@ -72,9 +111,13 @@ public class DeleteInBST {
         System.out.print("Inorder => ");
         InOrder(root);
 
-        int val = 8;
-        System.out.print("Inorder predecessor of "+ val+ " => "+inorderPredecesor(root, val).data);
+        // int val = 8;
+        // System.out.print("Inorder predecessor of "+ val+ " => "+inorderPredecesor(root, val).data);
         // System.out.print("Inorder succecessor of "+ val+ " => "+inorderSuccecesor(root, val).data);
+
+        int nodeToDelete = 0;
+        delete(root, nodeToDelete);
+        System.out.println("Node deleted " + nodeToDelete);
 
     }
     
