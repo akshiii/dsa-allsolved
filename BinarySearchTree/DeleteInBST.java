@@ -31,21 +31,7 @@ public class DeleteInBST {
         InOrder(root.right);
     }
 
-    //TODO: previous node in Inorder traversal of the Binary Tree
-    static node inorderPredecesor(node root, int val){
-        node temp = root;
-        while(temp.data != val){
-            if(val > temp.data){
-                temp = temp.right;
-            }
-            else{
-                temp = temp.left;
-            }   
-        }
-        return max(temp.left);
-    }
-
-    //TODO
+    
     static node inorderSuccecesor(node root, int val){
         node temp = root;
         while(temp.data != val){

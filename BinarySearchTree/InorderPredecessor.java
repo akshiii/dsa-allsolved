@@ -5,6 +5,10 @@ public class InorderPredecessor {
     static boolean flag = false;   
     static int inorderSuccsessor;
 
+    static int pre;
+    static int succ;
+
+    //Approach 1
     static void find(node root, int val){
         if(root == null){
             return ;
@@ -28,6 +32,49 @@ public class InorderPredecessor {
         find(root.right,val);
     }
 
+    //Approach 2
+    static void inorderPrede(node root, int val){
+
+        node temp = root;
+        while(temp.data != val){
+            if(val > temp.data){
+                temp = temp.right;
+                succ = temp.data;
+            }
+            else{
+                temp = temp.left;
+                pre = temp.data;
+            }   
+        }
+
+        if(temp.left != null){
+            pre = max(temp.left).data;
+        }
+        if(temp.right != null){
+            succ = min(temp.right).data;
+        }
+    }
+
+    //min in bst
+    static node min(node root){
+        node temp = root;
+        while(temp.left != null){
+            temp = temp.left;
+        }
+        
+        return temp;
+    }
+
+    //max in bst
+    static node max(node root){
+        node temp = root;
+        while(temp.right != null){
+            temp = temp.right;
+        }
+        
+        return temp;
+    }
+
     static void InOrder(node root){
         if(root == null){
             return;
@@ -46,10 +93,14 @@ public class InorderPredecessor {
         root.right.left = new node(8);
         root.right.right = new node(15);
 
-        
-        find(root, 9);
+        int val = 9;
+        find(root, val);
         InOrder(root);
         System.out.println();
+        
+        inorderPrede(root, val);
+        System.out.println("For value =  "+ val+ " pre = "+ pre+" succ = "+ succ);
+
     }
     
 }
