@@ -1,7 +1,7 @@
 package BinarySearchTree;
 
 
-// TODO One test case not passing in https://leetcode.com/problems/validate-binary-search-tree/
+// Solved in https://leetcode.com/problems/validate-binary-search-tree/
 //This fu below is solved
 public class ValidateBST {
     static int INT_MAX = 2147483647;
