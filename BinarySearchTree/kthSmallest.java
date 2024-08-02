@@ -22,13 +22,9 @@ public class kthSmallest {
         findKthSmallest(root.right);
     }
 
-    static void InOrder(node root){
-        if(root == null){
-            return;
-        }
-        InOrder(root.left);
-        System.out.print(root.data+ " ");
-        InOrder(root.right);
+    //TODO
+    static void findKthLargest(node root){
+        
     }
 
     public static void main(String[] args) {
@@ -42,9 +38,7 @@ public class kthSmallest {
 
         // int k = 3;
         findKthSmallest(root);
-       
         System.out.println("k th smallest = "+kthValue); 
-        InOrder(root);
     }
     
 }
