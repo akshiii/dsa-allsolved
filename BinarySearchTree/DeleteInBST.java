@@ -83,6 +83,7 @@ public class DeleteInBST {
 
             //2 child
             if(root.left != null && root.right != null){
+                //Either take min of right subtree or take max of left subtree
                 return min(root.right);
             }
 
