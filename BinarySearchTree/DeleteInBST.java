@@ -83,8 +83,12 @@ public class DeleteInBST {
 
             //2 child
             if(root.left != null && root.right != null){
-                //Either take min of right subtree or take max of left subtree
-                return min(root.right);
+                //Either take min of right subtree or take max of left subtree and set it as new node 
+                node mini = min(root.right);
+                root.data = mini.data;
+                //delete this mini 
+                root.right = delete(root.right, mini.data);
+                return root;
             }
 
         }
@@ -106,6 +110,7 @@ public class DeleteInBST {
         root.left.left = new node(1);
         root.left.left.left = new node(0);
         root.right.left = new node(8);
+        root.right.right = new node(15);
 
         System.out.println("min in bst = "+ min(root).data);
         System.out.println("max in bst = "+ max(root).data);
@@ -116,10 +121,10 @@ public class DeleteInBST {
         // System.out.print("Inorder predecessor of "+ val+ " => "+inorderPredecesor(root, val).data);
         // System.out.print("Inorder succecessor of "+ val+ " => "+inorderSuccecesor(root, val).data);
 
-        int nodeToDelete = 0;
-        delete(root, nodeToDelete);
+        int nodeToDelete = 1;
+        node newnode = delete(root, nodeToDelete);
         System.out.println("Node deleted " + nodeToDelete);
-
+        InOrder(newnode);
     }
     
 }
