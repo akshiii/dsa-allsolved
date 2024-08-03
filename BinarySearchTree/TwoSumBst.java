@@ -25,8 +25,6 @@ public class TwoSumBst {
         int j = arraySize - 1;
 
         while(i< j ){
-            int value1 = inorder.get(i);
-            int value2 = inorder.get(j);
             if(inorder.get(i) + inorder.get(j) == sum){
                 node1 = inorder.get(i);
                 node2 = inorder.get(j);
