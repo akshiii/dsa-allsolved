@@ -3,6 +3,7 @@ package BinarySearchTree;
 import java.util.ArrayList;
 
 //Flatten bst to a sorted list
+//https://www.geeksforgeeks.org/problems/flatten-bst-to-sorted-list--111950/0
 public class FlattenBST {
     static ArrayList<Integer> arr = new ArrayList<>(); 
 
