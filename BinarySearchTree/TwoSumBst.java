@@ -1,9 +1,8 @@
 package BinarySearchTree;
 
 import java.util.ArrayList;
-import java.util.List;
 
-//Two sum in a BST
+//Two sum in a BST - Using two pointer approach here
 public class TwoSumBst {
     static ArrayList<Integer> inorder = new ArrayList<>();
     static int node1;
