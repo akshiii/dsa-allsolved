@@ -4,7 +4,7 @@ package BinarySearchTree;
 public class kthSmallest {
 
     static int kthValue;
-    static int k = 3;
+    static int k = 4;
 
     static void findKthSmallest(node root){
         if(root == null){
@@ -18,6 +18,7 @@ public class kthSmallest {
         if(k == 0){
             k--;
             kthValue = root.data;
+            return;
         }
         findKthSmallest(root.right);
     }
@@ -36,9 +37,10 @@ public class kthSmallest {
         root.right.left = new node(8);
         root.right.right = new node(15);
 
-        // int k = 3;
+        
+        System.out.print(k+"th smallest = "); 
         findKthSmallest(root);
-        System.out.println("k th smallest = "+kthValue); 
+        System.out.print(kthValue); 
     }
     
 }
