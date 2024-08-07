@@ -5,10 +5,9 @@ import java.util.ArrayList;
 //https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/description/
 public class BSTFromPreorder {
     static ArrayList<Integer> preOrder = new ArrayList<>();
-    static node curr = null;
-    static node temp = null;
+    static int i = 0;
 
-    static node makeBst(int min, int max, int i){
+    static node makeBst(int min, int max){
         if(i >= preOrder.size()){
             return null;
         }
@@ -18,24 +17,19 @@ public class BSTFromPreorder {
         }
 
         node root = new node(preOrder.get(i++));
-        root.left = makeBst(min, root.data, i);
-        root.right = makeBst(root.data, max, i);
+        root.left = makeBst(min, root.data);
+        root.right = makeBst(root.data, max);
         return  root;
     }
 
-    // static node makeBst(){
-    //     node curr = new node(preOrder.get(0));
-
-    //     node temp = curr;
-        
-
-    //     while(temp != null){
-    //         temp.left
-    //     }
-        
-    //     return curr;
-    // }
-
+     static void InOrder(node root){
+        if(root == null){
+            return;
+        }
+        InOrder(root.left);
+        System.out.print(root.data+ " ");
+        InOrder(root.right);
+    }
     public static void main(String[] args) {
 
         preOrder.add(20);
@@ -49,11 +43,7 @@ public class BSTFromPreorder {
 
         int INT_MAX = 2147483647;
         int INT_MIN = -2147483648;
-
-        curr = new node(preOrder.get(0));
-        temp = curr;
-        makeBst(INT_MIN, INT_MAX, 1);
-
-        System.out.println("bst  ="+ curr.data);
+        node newnode = makeBst(INT_MIN, INT_MAX);
+        InOrder(newnode);
     }
 }
