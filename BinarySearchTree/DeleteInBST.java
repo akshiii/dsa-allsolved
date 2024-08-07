@@ -31,20 +31,6 @@ public class DeleteInBST {
         InOrder(root.right);
     }
 
-    
-    static node inorderSuccecesor(node root, int val){
-        node temp = root;
-        while(temp.data != val){
-            if(val > temp.data){
-                temp = temp.right;
-            }
-            else{
-                temp = temp.left;
-            }   
-        }
-        return min(temp.right);
-    }
-
     static node delete(node root, int val){
         if(root == null){
             return root;
@@ -102,10 +88,6 @@ public class DeleteInBST {
         System.out.println("max in bst = "+ max(root).data);
         System.out.print("Inorder => ");
         InOrder(root);
-
-        // int val = 8;
-        // System.out.print("Inorder predecessor of "+ val+ " => "+inorderPredecesor(root, val).data);
-        // System.out.print("Inorder succecessor of "+ val+ " => "+inorderSuccecesor(root, val).data);
 
         int nodeToDelete = 1;
         node newnode = delete(root, nodeToDelete);
