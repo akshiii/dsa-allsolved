@@ -132,11 +132,14 @@ public class Merge2SortedBST {
         InOrder(root.right);
     }
     public static void main(String[] args) {
-        node root1 = new node(5);
-        root1.left = new node(3);
-        root1.right = new node(9);
-        root1.left.left = new node(1);
-        root1.right.left = new node(8);
+        // node root1 = new node(5);
+        // root1.left = new node(3);
+        // root1.right = new node(9);
+        // root1.left.left = new node(1);
+        // root1.right.left = new node(8);
+        node root1 = new node(2);
+        root1.left = new node(1);
+        root1.right = new node(3);
 
         node root2 = new node(4);
         root2.left = new node(2);
@@ -145,16 +148,16 @@ public class Merge2SortedBST {
 
         //merge 2 bst
         //Step 1 : flatten both bst into sorted linked lists
-        // node head1 = null;
-        // convertIntoSortedDLL(root1, head1);
-        // head1.left = null;
+        node head1 = null;
+        convertIntoSortedDLL(root1, head1);
+        head1.left = null;
 
-        // node head2 = null;
-        // convertIntoSortedDLL(root2, head2);
-        // head2.left = null;
+        node head2 = null;
+        convertIntoSortedDLL(root2, head2);
+        head2.left = null;
 
-        flatten(root1);
-        flatten(root2);
+        // flatten(root1);
+        // flatten(root2);
 
         // InOrder(root1);
         //Step 2: Merge 2 sorted linked lists
