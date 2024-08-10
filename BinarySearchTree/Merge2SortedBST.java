@@ -3,6 +3,7 @@ package BinarySearchTree;
 import java.util.ArrayList;
 
 //TODO: Unsolved
+////This approach has TC= O(n) and SC= O(1)
 public class Merge2SortedBST {
     static ArrayList<Integer> arr = new ArrayList<>(); 
     static node prev;
