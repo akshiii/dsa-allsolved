@@ -85,7 +85,7 @@ public class Merge2SortedBST {
     }
 
     //converts linked list to a bst
-    static node llToBst(node head){
+    static node dllToBst(node head){
         if(head == null || head.right == null){
             return head;
         }
@@ -98,8 +98,8 @@ public class Merge2SortedBST {
             prev.right = null;
         }
 
-        midNode.left = llToBst(prev==null ? null : head);
-        midNode.right = llToBst(forw);
+        midNode.left = dllToBst(prev==null ? null : head);
+        midNode.right = dllToBst(forw);
         return midNode;
     }
 
@@ -134,7 +134,7 @@ public class Merge2SortedBST {
         node head = merge2LL(head1, head2);
 
         //Step 3: Convert sorted ll into BST
-        node bst  = llToBst(head);
+        node bst  = dllToBst(head);
 
         System.out.println("New bst = "+bst.data);
     }
