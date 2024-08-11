@@ -6,6 +6,7 @@ public class AdjacencyList {
         graph.addEdge(0, 1, false);
         graph.addEdge(1, 2, false);
         graph.addEdge(2, 0, false);
+        graph.addEdge(3, 1, false);
 
         graph.printAdjList();
     }
