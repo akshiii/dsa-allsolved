@@ -4,23 +4,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Graph {
-    Map<Integer , ArrayList<Integer>> adj = new HashMap<>();
+public class Graph<T> {
+    Map<T , ArrayList<T>> adj = new HashMap<>();
+    // private T value; 
 
     public Graph(){}
 
-    public void addEdge(int u, int v , boolean direction){
+    public void addEdge(T u, T v , boolean direction){
         // direction == true ? Directed graph
         // direction == false ? Undirected graph
 
         //Create an edge from u to v 
         if(adj.get(u) != null){
-            ArrayList<Integer> list = adj.get(u);
+            ArrayList<T> list = adj.get(u);
             list.add(v);
             adj.put(u, list);
         }
         else {
-            ArrayList<Integer> list = new ArrayList<>();
+            ArrayList<T> list = new ArrayList<>();
             list.add(v);
             adj.put(u, list);
         }
@@ -32,9 +33,9 @@ public class Graph {
     }
 
     public void printAdjList(){
-        for (Map.Entry<Integer,ArrayList<Integer>> entry : adj.entrySet()){
+        for (Map.Entry<T,ArrayList<T>> entry : adj.entrySet()){
             System.out.print("Key = " + entry.getKey());
-            for (int li : entry.getValue()) {
+            for (T li : entry.getValue()) {
                 System.out.print(" Value = "+li);
             }
             System.out.println("");
