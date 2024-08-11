@@ -2,7 +2,6 @@ package Graphs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Graph {
@@ -26,16 +25,19 @@ public class Graph {
             adj.put(u, list);
         }
         
-        //If directed graph, then only add v to u also
-        if(direction){
-            this.addEdge(v, u, false);
+        //If un-directed graph, then only add v to u also
+        if(!direction){
+            this.addEdge(v, u, true);
         }
     }
 
     public void printAdjList(){
-        // List<Integer> list = verticalList(root);
-        // for (int li : list) {
-        //     System.out.print(li+" ");
-        // }
+        for (Map.Entry<Integer,ArrayList<Integer>> entry : adj.entrySet()){
+            System.out.print("Key = " + entry.getKey());
+            for (int li : entry.getValue()) {
+                System.out.print(" Value = "+li);
+            }
+            System.out.println("");
+        }     
     }
 }
