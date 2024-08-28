@@ -9,6 +9,7 @@ import java.util.Queue;
 //Breadth First Search
 public class BFS {
     static void printBFS(int vertex, Map<Integer, Boolean> visited, int node, Graph<Integer> graph){
+        //This for loop is for any case of disconnected graph
         for(int i = 0; i < vertex; i++){
             if(visited.get(i) == false){
                 bfs(visited, node, graph);
