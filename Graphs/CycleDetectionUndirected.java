@@ -7,10 +7,11 @@ import java.util.Map;
 import java.util.Queue;
 
 //Cycle detection in undirected graphs
-public class CycleDetection {
+public class CycleDetectionUndirected {
 
 
-    static boolean isCycleDetected(int vertex, Map<Integer, Boolean> visited, int node, Graph<Integer> graph){
+    //Detecting cycle using bfs
+    static boolean isCycleDetectedUsingBFS(int vertex, Map<Integer, Boolean> visited, int node, Graph<Integer> graph){
         //This for loop is for any case of disconnected graph
         for(int i = 0; i < vertex; i++){
             if(visited.get(i+node) == false){
@@ -23,7 +24,7 @@ public class CycleDetection {
         return false;
     }
 
-     static boolean isCyclic(Map<Integer, Boolean> visited, int node, Graph<Integer> graph ){
+    static boolean isCyclic(Map<Integer, Boolean> visited, int node, Graph<Integer> graph ){
 
         Map<Integer , Integer> parent = new HashMap<>();
         parent.put(node, -1);
@@ -52,7 +53,40 @@ public class CycleDetection {
         return false;
     }
 
-    
+    //Detecting cycle using dfs
+    static boolean isCycleDetectedUsingDFS(int vertex, Map<Integer, Boolean> visited, int node, Graph<Integer> graph){
+        for(int i = 0; i < vertex; i++){
+            if(visited.get(i+node) == false){
+                boolean ans = isCyclicDFS(visited, node ,-1, graph);
+                if(ans){
+                    return true;
+                }
+            }
+        }   
+        return false;
+    }
+
+    static boolean isCyclicDFS(Map<Integer, Boolean> visited, int node,int parent, Graph<Integer> graph ){
+        visited.put(node, true);
+
+        for (int neighbour : graph.adj.get(node)) {
+            if(visited.get(neighbour) == false){
+                boolean cycleDetected = isCyclicDFS(visited, neighbour, node,  graph);
+                if(cycleDetected){
+                    return true;
+                }
+            }
+            else{
+                //if visited is true
+                if(neighbour != parent){
+                    //cycle present
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
     public static void main(String[] args) {
         int vertex = 6; // no of nodes
@@ -71,7 +105,8 @@ public class CycleDetection {
             visited.put(i+4, false);
         }
 
-        System.out.print("Is cyclic ? => "+isCycleDetected(vertex, visited, startingNode, graph));
+        // System.out.print("Is cyclic (using bfs) ? => "+isCycleDetectedUsingBFS(vertex, visited, startingNode, graph));
+        System.out.print("Is cyclic (using dfs) ? => "+isCycleDetectedUsingDFS(vertex, visited, startingNode, graph));
         
     }
 }

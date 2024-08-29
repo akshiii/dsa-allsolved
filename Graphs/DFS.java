@@ -21,7 +21,7 @@ public class DFS {
 
         //Har connected node ke lie recursive call
         ArrayList<Integer> list = graph.adj.get(node);
-            for (int val : list) {
+        for (int val : list) {
                 int neighbour = val;
                 if(visited.get(neighbour) == false){
                     dfs(visited, neighbour, graph);
