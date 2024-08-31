@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-//uisng dfs
+//TopologicalSort using dfs
 public class TopologicalSort {
     static void topologicalSort(Map<Integer, Boolean> visited, int node, Graph<Integer> graph , Stack<Integer> stack){
         visited.put(node, true);
