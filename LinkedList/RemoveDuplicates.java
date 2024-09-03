@@ -1,4 +1,8 @@
 //Removing duplicates from Sorted Linked List
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class RemoveDuplicates {
 
     //Removing only duplicate extra nodes
@@ -86,6 +90,40 @@ public class RemoveDuplicates {
     }
     
 
+    //Unsolved
+    void deleteAllDuplicates2(LinkedList list){
+        Node prev = list.head;
+        Node curr = prev;
+
+        Map<String,Boolean> visited = new HashMap<>();
+        boolean flag = false;
+
+        while(curr != null && curr.next!= null){
+            if(curr.data == curr.next.data || visited.get(curr.data) != null && visited.get(curr.data) == true){
+                visited.put(curr.data, true);
+                prev.next = curr.next;
+                curr = prev.next;
+            }
+            else{
+                if(flag == false){
+                    //for when beginning nodes are duplicates
+                    flag = true;
+                    if(visited.get(prev.data) != null && visited.get(prev.data) == true){
+                        list.head = prev.next;
+                        curr = curr.next;
+                    }
+                    else{
+                        list.head = prev;
+                        curr = curr.next;
+                    }
+                }
+                else {
+                    prev = prev.next;
+                    curr = curr.next;
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
         list.addLast("1");
@@ -107,7 +145,8 @@ public class RemoveDuplicates {
         // System.out.println();
         // list.printList();
         System.out.println();
-        removeDuplicates.deleteAllDuplicates(list);
+        // removeDuplicates.deleteAllDuplicates(list);
+        removeDuplicates.deleteAllDuplicates2(list);
         System.out.println();
         list.printList();
     }
