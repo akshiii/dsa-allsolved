@@ -45,6 +45,10 @@ class MinStack{
             }
         }
     }
+
+    int getMin(){
+        return this.mini;
+    }
 }
 
 public class GetMinStack {
@@ -57,8 +61,10 @@ public class GetMinStack {
         minStack.push(2);
         minStack.push(4);
         System.out.println("pop= "+ minStack.pop());
+        System.out.println("mini = "+ minStack.getMin());
         System.out.println("pop= "+ minStack.pop());
         System.out.println("pop= "+ minStack.pop());
+        System.out.println("mini = "+ minStack.getMin());
         System.out.println("pop= "+ minStack.pop());
     }
     
