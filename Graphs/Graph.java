@@ -43,7 +43,7 @@ public class Graph<T> {
     }
 
     //Weighted edges
-    public void addWeightedEdge(T u, T v, T weight){
+    public void addWeightedEdge(T u, T v, T weight, boolean direction){
         if(weightedAdj.get(u) != null){
             ArrayList<WeightedPair<T>> list = weightedAdj.get(u);
             WeightedPair<T> weightedPair = new WeightedPair(v, weight);
@@ -55,6 +55,11 @@ public class Graph<T> {
             WeightedPair<T> weightedPair = new WeightedPair(v, weight);
             list.add(weightedPair);
             weightedAdj.put(u, list);
+        }
+
+        //If un-directed graph, then only add v to u also
+        if(!direction){
+            this.addWeightedEdge(v, u, weight, true);
         }
     }
 

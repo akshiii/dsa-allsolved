@@ -1,68 +1,18 @@
 package Graphs;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.Stack;
 
 class PairInt{
-    int dist;
     int node;
+    int dist; // dist of node
 
-    public PairInt(int dist, int node) {
+    public PairInt(int node, int dist) {
         this.dist = dist;
         this.node = node;
     }
 }
-/*
-//We are using a MinStack which will give min of stack in O(1). This is a replcement for Set and PriorityQueue Daa structure
-class MinStack{
-    Stack<PairInt> stack;
-    PairInt mini;
-
-    MinStack(){
-        this.stack = new Stack<>();
-        this.mini = new PairInt(-1, -1);
-    }
-
-    void push(int dist, int node){
-        if(this.stack.isEmpty()){
-            this.mini = new PairInt(dist, node);
-            this.stack.push(this.mini);
-        }
-        else if(node < this.mini.node){
-            int val = 2 * node - this.mini.node;
-            this.stack.push(new PairInt(dist, val));
-            this.mini = new PairInt(dist, node);
-        }
-        else{
-            this.stack.push(new PairInt(dist, node));
-        }
-    }
-
-    PairInt pop(){
-        if(this.stack.isEmpty()){
-            return new PairInt(-1, -1);
-        }
-        else{
-            PairInt curr = this.stack.lastElement();
-            if(curr.node > this.mini.node){
-                return this.stack.pop();
-            }
-            else{
-                int prevMini = this.mini.node;
-                int val = 2*this.mini.node - curr.node;
-                this.mini = new PairInt(curr.dist, val);
-                this.stack.pop();
-                return new PairInt(curr.dist, prevMini);
-            }
-        }
-    }
-
-    PairInt getMin(){
-        return this.mini;
-    }
-}
-*/
-
 /*
  * Priority Queue (Min-Heap): If you need to remove the minimum element multiple times, 
  * a priority queue (implemented as a min-heap) allows you to remove the minimum element in 𝑂(log 𝑛) time. 
@@ -70,30 +20,57 @@ class MinStack{
 */
 
 public class DijkstrasAlgorithm {
+    static int[] arr;
+    static int INT_MAX = 2147483647;
+
+    static void findShortestDistUsingDij(Graph<Integer> graph, int vertex, int srcNode){
+        arr = new int[vertex];
+        Arrays.fill(arr, INT_MAX); // store int_max for all values
+        arr[srcNode] = 0; // dist from src_node to src_node is 0
+
+        boolean[] vis = new boolean[vertex];
+
+        // PriorityQueue<>(capacity,comparator );capacity - the initial capacity for this priority queue
+        // comparator - the comparator that will be used to order this priority queue. 
+        PriorityQueue<PairInt> prQueue = new PriorityQueue<>(vertex, Comparator.comparingInt(o -> o.dist));
+
+        prQueue.add(new PairInt(srcNode, 0));
+
+        while(!prQueue.isEmpty()){
+            PairInt minNode = prQueue.poll();
+
+            if(vis[minNode.node]){
+                continue;
+            }
+            
+            vis[minNode.node] = true;
+
+            if(graph.weightedAdj.containsKey(minNode.node)){
+                for (WeightedPair<Integer> neighbour : graph.weightedAdj.get(minNode.node)) {
+                    if(minNode.dist + neighbour.weight < arr[neighbour.node]){
+                        arr[neighbour.node] = arr[minNode.node] + neighbour.weight;
+                        prQueue.add(new PairInt(neighbour.node, arr[neighbour.node]));
+                    }
+                }
+            }
+        }
+
+        for(int i = 0; i < arr.length ; i++){
+            System.out.print(arr[i]+ " ");
+        }
+    }
     public static void main(String[] args) {
-        /*
-        MinStack minStack = new MinStack();
-        minStack.push(1,5);
-        minStack.push(2,3);
-        minStack.push(3,8);
-        minStack.push(4,2);
+        int vertex = 4; // total no of nodes
+        Graph<Integer> graph = new Graph<>();
+        graph.addWeightedEdge(0, 1, 5, false);
+        graph.addWeightedEdge(0, 2, 8, false);
+        graph.addWeightedEdge(1, 2, 9, false);
+        graph.addWeightedEdge(1, 3, 2, false);
+        graph.addWeightedEdge(3, 2, 6, false);
+        graph.printWeightedAdjList();
 
-        System.out.println("mini = "+ minStack.getMin().node);
-        PairInt pop1 = minStack.pop();
-        System.out.println("pop= [ "+ pop1.dist+ " , "+ pop1.node + " ]");
-        System.out.println("mini = "+ minStack.getMin().node);
-        */
+        int srcNode = 0;
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        pq.add(2);
-        pq.add(7);
-        pq.add(3);
-        pq.add(5);
-        pq.add(4);
-        pq.add(8);
-
-        System.out.println("peek = "+ pq.peek()); // This will print the smallest element
-        System.out.println("removing = "+ pq.poll()); // This will remove the smallest element
-        System.out.println("peek = "+ pq.peek()); // This will print the next smallest element
+        findShortestDistUsingDij(graph, vertex, srcNode);
     }
 }
