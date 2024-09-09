@@ -54,14 +54,14 @@ public class PrimsAlgorithm {
     }
 
     public static void main(String[] args) {
-        int vertex = 5; // total no of nodes
+        int vertex = 3; // total no of nodes
         Graph<Integer> graph = new Graph<>();
-        graph.addWeightedEdge(0, 1, 2, false);
+        graph.addWeightedEdge(0, 2, 1, false);
+        graph.addWeightedEdge(0, 1, 5, false);
         graph.addWeightedEdge(1, 2, 3, false);
-        graph.addWeightedEdge(0, 3, 6, false);
-        graph.addWeightedEdge(1, 4, 5, false);
-        graph.addWeightedEdge(3, 1, 8, false);
-        graph.addWeightedEdge(4, 2, 7, false);
+        // graph.addWeightedEdge(1, 4, 5, false);
+        // graph.addWeightedEdge(3, 1, 8, false);
+        // graph.addWeightedEdge(4, 2, 7, false);
         // o/p => key = [0, 2, 3, 6, 5];
         //        parent = [-1, 0, 1, 0, 1];
         graph.printWeightedAdjList();
