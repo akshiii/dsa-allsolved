@@ -3,6 +3,7 @@ package Graphs;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+//TC - O(nlogn) to sort edges it takes nlogn time and to make msp it takes n time , so n + nlogn = O(nlogn)
 class KruskalTrio{
     int weight;
     int u;
@@ -92,7 +93,7 @@ public class MSPUsingKruskalsAlgo {
         prQueue.add(new KruskalTrio(7,2,0));
         prQueue.add(new KruskalTrio(8,3,0));
         prQueue.add(new KruskalTrio(9,4,5));
-
+    
         System.out.println("totals sum of msp edges = "+findMspUsingKruskal(rank, parent, prQueue));
         
 
