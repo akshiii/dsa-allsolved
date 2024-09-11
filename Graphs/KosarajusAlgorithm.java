@@ -36,7 +36,7 @@ public class KosarajusAlgorithm {
         graph.addEdge(0, 1, true);
         graph.addEdge(1, 2, true);
         graph.addEdge(1, 3, true);
-        graph.addEdge(3, 4, true);
+        graph.addEdge(3, 4, true);//3
 
         
         //Step 1

@@ -67,7 +67,14 @@ public class DijkstrasAlgorithm {
         graph.addWeightedEdge(1, 2, 9, false);
         graph.addWeightedEdge(1, 3, 2, false);
         graph.addWeightedEdge(3, 2, 6, false);
-        graph.printWeightedAdjList();
+
+
+        // int vertex =3; // total no of nodes
+        // Graph<Integer> graph = new Graph<>();
+        // graph.addWeightedEdge(0, 1, 5, true);
+        // graph.addWeightedEdge(0, 2, 6, true);
+        // graph.addWeightedEdge(2, 1, -3, true);
+        // graph.printWeightedAdjList();
 
         int srcNode = 0;
 
