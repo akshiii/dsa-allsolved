@@ -32,6 +32,30 @@ public class CutIntoSegments {
         dp[n] = Math.max(a, Math.max(b, c));
         return dp[n];
     }
+
+    static int tabulationSol(int n, int x, int y,int z){
+        int[] dp = new int[n+1];
+        Arrays.fill(dp, INT_MIN);
+        dp[0] = 0;
+
+        for(int i = 1; i <= n; i++){
+            if(i-x >= 0){
+                dp[i] = Math.max(dp[i], dp[i-x] + 1);
+            }
+            if(i-y >= 0){
+                dp[i] = Math.max(dp[i], dp[i-y] + 1);
+            }
+            if(i-z >= 0){
+                dp[i] = Math.max(dp[i], dp[i-z] + 1);
+            }
+        }
+
+        if(dp[n] < 0){
+            return 0;
+        }
+        return dp[n];
+    }
+
     public static void main(String[] args) {
         int n = 17;
         int x = 5;
@@ -55,5 +79,8 @@ public class CutIntoSegments {
             System.out.println("Max no of segments = "+ans);
 
         /*Tabulation sol */
+        ans = tabulationSol(n,x,y,z);
+        System.out.println("Max no of segments = "+ans);
+
     }
 }
