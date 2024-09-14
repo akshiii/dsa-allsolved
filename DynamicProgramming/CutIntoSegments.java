@@ -82,5 +82,7 @@ public class CutIntoSegments {
         ans = tabulationSol(n,x,y,z);
         System.out.println("Max no of segments = "+ans);
 
+        //No other space optimization possible here
+
     }
 }
