@@ -81,7 +81,7 @@ public class KnapsackProblem {
         }
 
         for(int i = 1; i < index; i++ ){
-            for(int w = 0; w <= capacity; w++ ){
+            for(int w = capacity; w >=0; w-- ){
                 int include = 0;
                 if(weight[i] <= w){
                     include = value[i] + prev[w - weight[i]];
