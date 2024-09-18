@@ -49,9 +49,9 @@ public class GridProbability {
         return pro;
     }           
     public static void main(String[] args) {
-        int[][] path = {{0,1},{0,2},{0,3}}; // 99%
+        int[][] path = {{0,1},{0,2},{0,3}}; // 99%  or //0.99
         int[][] path1 = {{0,1},{0,2},{1,2}}; // 95%
-        System.out.println("Probability "+findProbability(path1)); //0.99
+        System.out.println("Probability "+findProbability(path1)); 
 
     }
 }
