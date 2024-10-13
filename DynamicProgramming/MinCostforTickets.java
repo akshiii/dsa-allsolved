@@ -97,7 +97,7 @@ public class MinCostforTickets {
 	}
 
 	static int spaceOptimizedSol(int n, int[] days, int[] cost){
-		int ans = INT_MAX;
+		int ans = 0;
 
 		Queue<PairInt> month = new LinkedList<>();
 		Queue<PairInt> week = new LinkedList<>();
@@ -109,7 +109,10 @@ public class MinCostforTickets {
 				week.remove();
 			}
 
-			// week.add
+			week.add(new PairInt(day, ans + cost[1]));
+			month.add(new PairInt(day, ans + cost[2]));
+
+			ans = Math.min(ans + cost[0], Math.min(month.peek().cost, week.peek().cost));
 		}
 
 		return ans;
@@ -129,5 +132,6 @@ public class MinCostforTickets {
 
 		System.out.println("Min cost = "+ tabulationSol(days.length, days ,cost));
 
+		System.out.println("Min cost = "+ spaceOptimizedSol(days.length, days ,cost));
 	}
 }
