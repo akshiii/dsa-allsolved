@@ -60,5 +60,6 @@ public class PerfectSquares {
 		}
 		System.out.println("Min no of squares: "+ memoizedSol(N, dp));
 		System.out.println("Min no of squares: "+ tabulationSol(N));
+		//Space optimization not possible
 	}
 }
