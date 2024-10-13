@@ -1,3 +1,9 @@
 {
-  "java.debug.settings.onBuildFailureProceed": true
+  "java.debug.settings.onBuildFailureProceed": true,
+  "java.project.sourcePaths": [
+    ".",
+    "LinkedList",
+    "Recursion"
+  ],
+  "java.project.referencedLibraries": []
 }

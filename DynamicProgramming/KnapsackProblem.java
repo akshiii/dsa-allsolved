@@ -1,7 +1,7 @@
 package DynamicProgramming;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+// import java.lang.reflect.Array;
+// import java.util.Arrays;
 
 public class KnapsackProblem {
     static int recursiveSol(int index,  int[] weight, int[] value, int capacity){
@@ -47,7 +47,7 @@ public class KnapsackProblem {
     static int tabulationSol(int index,  int[] weight, int[] value, int capacity){
 
         int[][] dp = new int[index][capacity+1]; // all values are initilized with 0 already
-        
+
         for(int w = weight[0]; w <= capacity; w++ ){
             if(weight[0] <= capacity){
                 dp[0][w] = value[0];
@@ -68,7 +68,7 @@ public class KnapsackProblem {
 
         return dp[index-1][capacity];
     }
-    
+
     static int spaceOptimizedSol(int index,  int[] weight, int[] value, int capacity){
 
         int[] prev = new int[capacity+1];
@@ -95,7 +95,7 @@ public class KnapsackProblem {
 
         return prev[capacity];
     }
-   
+
     public static void main(String[] args) {
         int n = 4; // items
         // int[] w = {1,2,4,5};
