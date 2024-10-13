@@ -1,5 +1,17 @@
 package DynamicProgramming;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+class PairInt{
+    int day;
+    int cost;
+
+    public PairInt(int day, int cost) {
+        this.day = day;
+        this.cost = cost;
+    }
+}
 public class MinCostforTickets {
 	static int INT_MAX = 2147483647;
 
@@ -83,6 +95,26 @@ public class MinCostforTickets {
 
 		return dp[0];
 	}
+
+	static int spaceOptimizedSol(int n, int[] days, int[] cost){
+		int ans = INT_MAX;
+
+		Queue<PairInt> month = new LinkedList<>();
+		Queue<PairInt> week = new LinkedList<>();
+		for(int day : days){
+			while(!month.isEmpty() && month.peek().day + 30 <= day){
+				month.remove();
+			}
+			while(!week.isEmpty() && week.peek().day + 7 <= day){
+				week.remove();
+			}
+
+			// week.add
+		}
+
+		return ans;
+	}
+
 	public static void main(String[] args) {
 		int[] days = {1,4,6,7,8,20};
 		int[] cost = {2,7,15};
