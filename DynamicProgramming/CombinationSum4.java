@@ -1,5 +1,5 @@
 package DynamicProgramming;
-
+// https://leetcode.com/problems/combination-sum-iv/description/
 public class CombinationSum4 {
 	//TC= exponential
 	static int recursiveSol(int[] arr, int target){
@@ -34,7 +34,7 @@ public class CombinationSum4 {
 
 		int ans = 0;
 		for(int i = 0; i < arr.length; i++){
-			ans += recursiveSol(arr, target - arr[i]);
+			ans += memoizedSol(arr, target - arr[i], dp);
 		}
 
 		dp[target] = ans;
