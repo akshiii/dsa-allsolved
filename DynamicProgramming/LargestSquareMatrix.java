@@ -66,6 +66,7 @@ public class LargestSquareMatrix {
 		}
 	}
 
+	//SC = O(column) = O(n) TC = O(m*n)
 	static void spaceOptimizedSol(int[][] matrix){
 		int row = matrix.length;
 		int column = matrix[0].length;
@@ -91,6 +92,35 @@ public class LargestSquareMatrix {
 			next = curr;
 		}
 	}
+
+	//SC = O(1) TC = O(m*n) UNSOLVED
+	static void morespaceOptimizedSol(int[][] matrix){
+		int row = matrix.length;
+		int column = matrix[0].length;
+
+		// int[] curr = new int[column+1];
+		// int[] next = new int[column+1];
+
+		int right = -1;
+		int down = -1;
+		int diagonal = -1;
+
+		for (int i = row -2; i >= 0; i--) {
+			for(int j = column -2; j >= 0 ; j--){
+
+				right = matrix[i][j+1];
+				down = matrix[i+1][j];
+				diagonal = matrix[i+1][j+1];
+
+				if(matrix[i][j] == 1){
+					int ans = 1 + Math.min(right, Math.min(down, diagonal));
+					max = Math.max(max, ans);
+
+				}
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		int[][] matrix = {{1,1,1,1,1},{1,1,1,1,1},{0,1,1,1,0}}; //3
 		maxArea(matrix, 0,0);
@@ -112,6 +142,10 @@ public class LargestSquareMatrix {
 
 		max = 0;
 		spaceOptimizedSol(matrix);
+		System.out.println("Max area = "+ max);
+
+		max = 0;
+		morespaceOptimizedSol(matrix);
 		System.out.println("Max area = "+ max);
 	}
 }
