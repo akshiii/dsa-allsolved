@@ -84,6 +84,7 @@ public class MinimumSidewaysJump {
         return Math.min(dp[2][0], Math.min(1+dp[1][0], 1+dp[3][0]));
     }
 
+    //TC = O(3*3*n) = O(n) SC = O(1)
     static int spaceOptimizedSol(int[] obstacles){ 
         int n = obstacles.length -1;
         int[] curr = new int[4];
