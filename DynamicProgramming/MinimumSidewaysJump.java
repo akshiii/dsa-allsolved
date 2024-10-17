@@ -73,7 +73,7 @@ public class MinimumSidewaysJump {
                     int ans = INT_MAX;
                     for(int i = 1; i <= 3; i++){
                         if(currlane != i && obstacles[pos] != i){
-                            ans = Math.min(ans, 1 + dp[i][pos]);
+                            ans = Math.min(ans, 1 + dp[i][pos+1]);
                         }
                     }
                     dp[currlane][pos] = ans;
