@@ -48,6 +48,7 @@ public class MinimumSidewaysJump {
         return dp[currlane][pos];
     }
  
+    //SC = O(4*n)
     static int tabulationSol(int[] obstacles){
  
         int n = obstacles.length -1;
@@ -82,9 +83,41 @@ public class MinimumSidewaysJump {
         }
         return Math.min(dp[2][0], Math.min(1+dp[1][0], 1+dp[3][0]));
     }
+
+    static int spaceOptimizedSol(int[] obstacles){ 
+        int n = obstacles.length -1;
+        int[] curr = new int[4];
+        int[] next = new int[4];
+ 
+        for (int i = 0; i < 4; i++) {
+            curr[i] = INT_MAX;
+            next[i] = 0;
+        }
+ 
+        for(int pos = n-1; pos >= 0; pos-- ){
+            for(int currlane = 1; currlane <= 3; currlane++){
+                if(obstacles[pos+1] != currlane){
+                    curr[currlane] = next[currlane];
+                }
+                else{
+                    //sideways jump
+                    int ans = INT_MAX;
+                    for(int i = 1; i <= 3; i++){
+                        if(currlane != i && obstacles[pos] != i){
+                            ans = Math.min(ans, 1 + next[i]);
+                        }
+                    }
+                    curr[currlane] = ans;
+                }
+            }
+            next = curr;
+        }
+        return Math.min(next[2], Math.min(1+next[1], 1+next[3]));
+    }
+
     public static void main(String[] args) {
         int[] obstacles = {0,1,2,3,0}; //2
-        // int[] obstacles = {0,1,1,3,3,0};
+        // int[] obstacles = {0,1,1,3,3,0}; //0
  
         System.out.println("No of sideways jump = "+recursiveSol(obstacles, 2, 0));
  
@@ -97,6 +130,8 @@ public class MinimumSidewaysJump {
         System.out.println("No of sideways jump = "+memoizedSol(obstacles, 2, 0,dp));
  
         System.out.println("No of sideways jump = "+tabulationSol(obstacles));
+
+        System.out.println("No of sideways jump = "+spaceOptimizedSol(obstacles));
  
     }
 }
