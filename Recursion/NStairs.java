@@ -13,7 +13,7 @@ public class NStairs {
         return ways;
     }
     public static void main(String[] args) {
-        int stairs = 3;
+        int stairs = 5;
         System.out.println(distinctWays(stairs));
 
     }
