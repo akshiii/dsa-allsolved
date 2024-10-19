@@ -79,11 +79,11 @@ public class rat_in_a_maze {
         };
         int[][] visitedArray = new int[4][4];
         //initialize visitedArray with 0
-        for(int i = 0; i < visitedArray.length; i++){
-            for(int j = 0; j < visitedArray.length; j++){
-                visitedArray[i][j] = 0;
-            }
-        }
+        // for(int i = 0; i < visitedArray.length; i++){
+        //     for(int j = 0; j < visitedArray.length; j++){
+        //         visitedArray[i][j] = 0;
+        //     }
+        // }
         ArrayList<String> patternStr = new ArrayList<String>();
         if(mainArr[0][0] == 0){
             System.out.println("Wrong input");
