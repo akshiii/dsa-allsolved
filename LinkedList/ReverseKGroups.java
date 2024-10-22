@@ -7,7 +7,7 @@ public class ReverseKGroups {
      * @param k Size of groups
      * @return New head node 
      */
-    public Node kReverse(LinkedList list,Node start, int k) {
+    static Node kReverse(LinkedList list,Node start, int k) {
         //base call
         if(start == null){
             return null;
@@ -47,8 +47,8 @@ public class ReverseKGroups {
         list.printList();
         System.out.println();
 
-        ReverseKGroups rll = new ReverseKGroups();
-        list.head = rll.kReverse(list,list.head, 2);
+        // ReverseKGroups rll = new ReverseKGroups();
+        list.head = kReverse(list,list.head, 2);
         
         list.printList();
     }

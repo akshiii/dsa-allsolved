@@ -32,7 +32,7 @@ public class InorderPredecessor {
         find(root.right,val);
     }
 
-    //Approach 2
+    //Approach 2 - Wrong approach - it may or not be a BST
     static void inorderPrede(node root, int val){
 
         node temp = root;
