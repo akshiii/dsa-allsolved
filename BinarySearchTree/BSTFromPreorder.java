@@ -41,7 +41,7 @@ public class BSTFromPreorder {
         preOrder.add(30);
         preOrder.add(42);
 
-        int INT_MAX = 2147483647;
+        int INT_MAX = Integer.MAX_VALUE;
         int INT_MIN = -2147483648;
         node newnode = makeBst(INT_MIN, INT_MAX);
         InOrder(newnode);

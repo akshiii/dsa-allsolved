@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-//Cycle detection in undirected graphs - using bfs
+//Cycle detection in undirected graphs
 public class CycleDetectionUndirected {
 
 
