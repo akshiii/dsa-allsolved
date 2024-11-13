@@ -32,6 +32,43 @@ public class ReducingDishes {
         return dp[index][time];
     }
  
+    // TC= O(n2)
+    static int tabulationSol(int[] satisfaction){
+        
+        int[][] dp = new int[satisfaction.length+1][satisfaction.length+1];
+
+        for(int index = satisfaction.length - 1; index >= 0; index--){
+            for(int time = index; time >= 0; time--){
+                int incude = satisfaction[index] * (time + 1) + dp[index+1][time+1];
+                int exclude = dp[index+1][time];
+        
+                dp[index][time] = Math.max(incude, exclude);
+            }
+            
+        }
+        return dp[0][0];
+    }
+
+    //TODO: Unsolved
+    static int spaceOptimizedSol(int[] satisfaction){
+
+        int n = satisfaction.length;
+        int[] curr = new int[n+1];
+        int[] next = new int[n+1];
+
+        for(int index = n - 1; index >= 0; index--){
+            for(int time = index; time >= 0; time--){
+
+                int include = satisfaction[index] * (time + 1) + next[time+1];
+                int exclude = next[time];
+        
+                curr[time] = Math.max(include, exclude);
+            }
+            next = curr; // because we are going down to up
+        }
+        return next[0];
+    }
+
     public static void main(String[] args) {
         // int[] satisfaction = {-1,-4,-5};
         // int[] satisfaction = {4,3,2};
@@ -51,5 +88,9 @@ public class ReducingDishes {
             }
         }
         System.out.println("Max time = "+ getMaxTimeMem(satisfaction, 0,0, dp));
+        
+        System.out.println("Max time = "+ tabulationSol(satisfaction));
+
+        System.out.println("Max time = "+ spaceOptimizedSol(satisfaction));
     }
 }
