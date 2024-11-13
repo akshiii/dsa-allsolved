@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.DP1;
 
 public class PerfectSquares {
 	static int INT_MAX = 2147483647;

@@ -1,4 +1,4 @@
-
+package DynamicProgramming.DP2;
 //https://leetcode.com/problems/maximal-square/
 public class LargestSquareMatrix {
 	static int max = 0;

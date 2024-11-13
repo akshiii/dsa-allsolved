@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.DP1;
 
 import java.util.LinkedList;
 import java.util.Queue;

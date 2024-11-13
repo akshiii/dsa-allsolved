@@ -1,4 +1,6 @@
+package DynamicProgramming.DP1;
 // https://leetcode.com/problems/combination-sum-iv/description/
+
 public class CombinationSum4 {
 	//TC= exponential
 	static int recursiveSol(int[] arr, int target){

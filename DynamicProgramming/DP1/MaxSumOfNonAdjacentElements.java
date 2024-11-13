@@ -1,6 +1,5 @@
-package DynamicProgramming;
+package DynamicProgramming.DP1;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class MaxSumOfNonAdjacentElements {

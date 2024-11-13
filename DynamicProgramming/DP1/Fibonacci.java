@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.DP1;
 
 //SC = O(1) TC = O(n)
 public class Fibonacci {
