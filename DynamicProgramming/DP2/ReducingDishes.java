@@ -3,7 +3,7 @@ package DynamicProgramming.DP2;
 import java.util.Arrays;
 
 public class ReducingDishes {
- 
+
     static int getMaxTime(int[] satisfaction, int index, int time){
         if(index == satisfaction.length){
             return 0;
@@ -69,6 +69,25 @@ public class ReducingDishes {
         return next[0];
     }
 
+    //Another special approach TC= O(n) -> for worst case, best case -> O(1)
+    static int maxSatisfaction(int[] satisfaction) {  
+        Arrays.sort(satisfaction);
+        int prefixSum = 0;      
+        int cur = 0;        
+        
+        for (int i = satisfaction.length - 1; i >= 0; i--) {    
+            prefixSum += satisfaction[i];
+            
+            if(prefixSum<0){
+                break;
+            }
+
+            cur += prefixSum;           
+        }       
+
+        return cur;                    
+    }
+
     public static void main(String[] args) {
         // int[] satisfaction = {-1,-4,-5};
         // int[] satisfaction = {4,3,2};
@@ -91,6 +110,6 @@ public class ReducingDishes {
         
         System.out.println("Max time = "+ tabulationSol(satisfaction));
 
-        System.out.println("Max time = "+ spaceOptimizedSol(satisfaction));
+        System.out.println("Max time = "+ maxSatisfaction(satisfaction));
     }
 }
