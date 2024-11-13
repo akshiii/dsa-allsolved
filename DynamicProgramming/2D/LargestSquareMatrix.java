@@ -1,4 +1,3 @@
-package DynamicProgramming;
 
 //https://leetcode.com/problems/maximal-square/
 public class LargestSquareMatrix {

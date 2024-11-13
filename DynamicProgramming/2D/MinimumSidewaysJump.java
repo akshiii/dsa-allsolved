@@ -1,4 +1,4 @@
-package DynamicProgramming;
+
  
 public class MinimumSidewaysJump {
     static int INT_MAX = 1000000000;
