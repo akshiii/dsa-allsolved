@@ -38,7 +38,7 @@ public class ReducingDishes {
         int[][] dp = new int[satisfaction.length+1][satisfaction.length+1];
 
         for(int index = satisfaction.length - 1; index >= 0; index--){
-            for(int time = index; time >= 0; time--){
+            for(int time = index; time >= 0; time--){// time always starts from value of index
                 int incude = satisfaction[index] * (time + 1) + dp[index+1][time+1];
                 int exclude = dp[index+1][time];
         
