@@ -107,6 +107,7 @@ public class LongestIncreasingSubsequence {
         return arrayList.size();
     }
 
+    //upper bound is first element in a sorted range that is strictly greater than a given value.
     static int upperBound(ArrayList<Integer> seq, int k){
         int start = 0, end = seq.size() - 1;
         int mid;
