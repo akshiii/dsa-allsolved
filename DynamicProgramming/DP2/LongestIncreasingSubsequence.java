@@ -1,5 +1,7 @@
 package DynamicProgramming.DP2;
 
+import java.util.ArrayList;
+
 // https://leetcode.com/problems/longest-increasing-subsequence/
 public class LongestIncreasingSubsequence {
 
@@ -82,10 +84,50 @@ public class LongestIncreasingSubsequence {
         }
         return next[0];
     }
+
+    //DP with Binary search
+    static int binarySearchSol(int[] seq, int n){
+        if(n == 0){
+            return 0;
+        }
+
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(seq[0]);
+
+        for(int i = 1; i < seq.length; i++){
+            if(seq[i] > arrayList.get(arrayList.size() - 1)){
+                arrayList.add(seq[i]);
+            }
+            else{
+                int upperBound = upperBound(arrayList, seq[i]);
+                arrayList.set(upperBound, seq[i]);
+            }
+        }
+
+        return arrayList.size();
+    }
+
+    static int upperBound(ArrayList<Integer> seq, int k){
+        int start = 0, end = seq.size() - 1;
+        int mid;
+        
+        while(start < end){
+            mid = (int)Math.floor((start+end)/2);
+            if(seq.get(mid) <= k){
+                start = mid+1;
+            }
+            else{
+                end = mid;
+            }
+        }
+
+        return start;
+    }
     public static void main(String[] args) {
         // int[] seq = {10,9,2,5,3,7,101,18};
         // int[] seq = {0,1,0,3,2,3};
-        int[] seq = {7,7,7,7,7,7,7};
+        // int[] seq = {7,7,7,7,7,7,7};
+        int[] seq = {5,8,3,7,9,1};
         System.out.println(recursiveSol(seq, 0, -1));
 
         int[][] dp = new int[seq.length][seq.length+1];
@@ -99,6 +141,8 @@ public class LongestIncreasingSubsequence {
         System.out.println(tabulationSol(seq));
         
         System.out.println(spaceOptimizedSol(seq));
+
+        System.out.println(binarySearchSol(seq, seq.length));
     }
     
 }
