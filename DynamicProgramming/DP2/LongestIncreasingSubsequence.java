@@ -85,7 +85,7 @@ public class LongestIncreasingSubsequence {
         return next[0];
     }
 
-    //DP with Binary search
+    //DP with Binary search TC- O(nlogn) SC- O(1)
     static int binarySearchSol(int[] seq, int n){
         if(n == 0){
             return 0;
