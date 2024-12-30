@@ -12,8 +12,35 @@ public class StackingCuboid {
         //Step 2: Sort all cubiod basis on width or length
         sort(cuboids, cuboids.length);
 
-        return 0;
+        //Step 3: Use LIS logic 
+        int[] seq = new int[cuboids.length];
+        for(int i = 0; i < cuboids.length; i++){
+            seq[i] = cuboids[i][2];
+        }
+        return tabulationSol(seq);
     }
+
+    static int tabulationSol(int[] seq){
+
+        int n = seq.length;
+        int[][] dp = new int[n+1][n+1];
+
+        //ulta flow from previous answer-(memoizedSol)
+        for(int curr = n-1; curr >= 0; curr--){
+            for(int prev = curr-1; prev >= -1 ; prev--){// previous always starts from curr -1
+                int include = 0;
+                if(prev == -1 || seq[curr] > seq[prev]){
+                    include = dp[curr][2] + dp[curr+1][curr+1];
+                }
+
+                int exclude = 0 + dp[curr+1][prev+1];
+
+                dp[curr][prev+1] = Math.max(include, exclude);
+            }
+        }
+        return dp[0][0];
+    }
+
 
     static void sort(int arr[][], int size){
         //base case
