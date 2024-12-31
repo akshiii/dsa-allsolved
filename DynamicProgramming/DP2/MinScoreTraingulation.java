@@ -54,7 +54,7 @@ public class MinScoreTraingulation {
  
             }
         }
-        return dp[0][polygon.length-1];
+        return dp[0][polygon.length-1]; // why did we do this?
     }
  
     //My Solution - does not pass all test cases
