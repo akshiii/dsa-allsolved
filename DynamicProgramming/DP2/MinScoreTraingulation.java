@@ -1,4 +1,4 @@
-package DynamicProgramming.DP1;
+package DynamicProgramming.DP2;
  
 public class MinScoreTraingulation {
     static int INT_MAX = 2147483647;
