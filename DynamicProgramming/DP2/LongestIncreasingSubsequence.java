@@ -116,6 +116,10 @@ public class LongestIncreasingSubsequence {
             mid = (int)Math.floor((start+end)/2);
             if(seq.get(mid) <= k){
                 start = mid+1;
+                if(seq.get(mid) == k){
+                    start = mid;
+                    break;
+                }
             }
             else{
                 end = mid;

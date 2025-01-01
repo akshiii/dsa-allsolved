@@ -1,12 +1,13 @@
 package DynamicProgramming.DP2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-// TODO: Not solved
 public class RussianDolls {
     static int findMax(int[][] envelopes){
         // Step 1: Sort by width
-        sort(envelopes, envelopes.length);
+        Arrays.sort(envelopes,(a,b) -> a[0]==b[0]?b[1]-a[1] : a[0]-b[0]);
+        // sort(envelopes, envelopes.length);
         int[] heights = new int[envelopes.length];
         for(int i = 0; i < envelopes.length; i++){
             heights[i] = envelopes[i][1];
@@ -69,6 +70,10 @@ public class RussianDolls {
             mid = (int)Math.floor((start+end)/2);
             if(seq.get(mid) <= k){
                 start = mid+1;
+                if(seq.get(mid) == k){
+                    start = mid;
+                    break;
+                }
             }
             else{
                 end = mid;
@@ -79,10 +84,11 @@ public class RussianDolls {
     }
    
     public static void main(String[] args) {
-        int[][] envelopes = {{5,4}, {6,4}, {6,7}, {2,3}}; //3
+        int[][] envelopes = {{5,4}, {6,4}, {6,7}, {2,3}}; //ans- 3
+        int[][] envelopes1 = {{15,8},{2,20},{2,14},{4,17},{8,19},{8,9},{5,7},{11,19},{8,11},{13,11},{2,13},{11,19},{8,11},{13,11},{2,13}}; //ans - 3
         // int[][] envelopes = {{1,1}, {1,1}, {1,1}, {1,1}}; //1
 
-        System.out.println("Max : "+ findMax(envelopes));
+        System.out.println("Max : "+ findMax(envelopes1));
     }
     
 }
